@@ -1,0 +1,15 @@
+@use "../styles" as s;
+
+img {
+    max-width: 400px; 
+    width: 30vw; 
+    margin: 10px 5%;
+}
+
+.bodyText {
+    @include s.bodyText;
+
+    div {
+        margin-bottom: 1em;
+    }
+}

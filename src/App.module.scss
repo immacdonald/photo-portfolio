@@ -1,4 +1,4 @@
-@use "./styles/colors";
+@use "./styles";
 
 * {
     margin: 0;
@@ -40,7 +40,6 @@ body {
 	background-color: var(--c-background-primary);
 	color: var(--c-text-primary);
 	overflow-x: hidden;
-    background-color: aqua;
 }
 
 h1, h2, h3, h4, h5, h6 {
