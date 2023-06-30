@@ -6,6 +6,8 @@ import Works from "./components/Works";
 import CV from "./components/CV";
 import Sidebar from "./components/Sidebar";
 
+import style from "./App.module.scss";
+
 export default function App() {
   return(
     <Routes>
