@@ -15,9 +15,9 @@ const Sidebar = () => {
                 <nav className={style.links}>
                     <NavLink label="Home" link="/"/>
                     <NavLink label="Bio" link="/biography"/>
-                    <NavSublinks label="WORKS" starting={true}>
-                        <NavLink label="ORION" link="/orion"/>
-                        <NavLink label="GALAXY" link="/galaxy"/>
+                    <NavSublinks label="Works" starting={true}>
+                        <NavLink label="Orion" link="/orion"/>
+                        <NavLink label="Galaxy" link="/galaxy"/>
                     </NavSublinks>
                     <NavLink label="CV" link="/cv"/>
                 </nav>
