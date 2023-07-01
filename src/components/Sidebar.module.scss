@@ -41,14 +41,15 @@ $borderWidth: 1px;
         height: 1em;
         color: var(--c-text-action);
         cursor: pointer;
+		letter-spacing: .05rem;
 
         &:hover, &:focus {
             color: var(--c-accent-primary);
         }
 
-        &:active {
-            color: var(--c-text-action);
-        }
+		&:active {
+			color: var(--c-text-action);
+		}
     }
 
     > div {
@@ -56,31 +57,33 @@ $borderWidth: 1px;
     }
 }
 
-.sublinks {
-    height: fit-content;
-    line-height: inherit;
-    padding-left: 10%;
+.toggleButton {
+	position: fixed;
+	top: calc(50% - #{$navToggleSize}/2);
+	left: calc(#{$navWidth} - #{$navToggleSize}/2);
+	width: $navToggleSize;
+	height: $navToggleSize;
+	background-color: white;
+	border-radius: calc(#{$navToggleSize}/2);
 
-    > div {
-        overflow-y: hidden;
-        transition: height ease-in-out 0.5s;
+	img {
+		position: absolute;
+		top: -5px;
+		left: 5px;
+		width: calc(#{$navToggleSize} - 10px);
+		z-index: 950;
+	}
 
-        > div {
-            font-size: 0.75em;
 
-            &:first-of-type {
-                margin-top: 0;
-            }
-        }
-    }
-}
-
-.link {
-    height: 1em;
-    width: 100%;
-    line-height: inherit;
-    
-    a {
-        padding-left: 10%;
-    }
+	.visual {
+		position: absolute;
+		left: 50%;
+		width: 50%;
+		height: 100%;
+		border-top-right-radius: calc(#{$navToggleSize} + #{$borderWidth});
+		border-bottom-right-radius: calc(#{$navToggleSize} + #{$borderWidth});
+		border: $borderWidth solid $borderColor;
+		border-left: 0;
+		background-color: white;
+	}
 }

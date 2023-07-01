@@ -1,51 +1,31 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import style from "./Sidebar.module.scss";
+import NavLink from "./NavLink";
+import NavSublinks from "./NavSublinks";
 
 const Sidebar = () => {
-    const [sublinksOpen, setSublinksOpen] = useState(true);
-    const contentRef = useRef();
 
-    useEffect(() => {
-        if (contentRef.current) {
-          const height = sublinksOpen ? contentRef.current.scrollHeight + 'px' : '0px';
-          contentRef.current.style.height = height;
-        }
-      }, [sublinksOpen]);
-
-    const toggleSublinks = () => {
-        setSublinksOpen(!sublinksOpen);
-    }
-
-
+    const logo = require("../static/images/icons/logo.png");
 
     return (
     <div className={style.sidebar}>
         <div className={style.sidebarContent}>
             <div className={style.navigation}>
                 <nav className={style.links}>
-                    <div className={style.link}>
-                        <Link to="/">HOME</Link>
-                    </div>
-                    <div className={style.link}>
-                        <Link to="/bio">BIO</Link>
-                    </div>
-                    <div className={style.sublinks} onClick={toggleSublinks}>
-                        <a role="button">WORKS</a>
-                        <div ref={contentRef}>
-                            <div className={style.link}>
-                                <Link to="/orion">ORION</Link>
-                            </div>
-                            <div className={style.link}>
-                                <Link to="/tub">TUB</Link>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={style.link}>
-                        <Link to="/cv">CV</Link>
-                    </div>
+                    <NavLink label="Home" link="/"/>
+                    <NavLink label="Bio" link="/biography"/>
+                    <NavSublinks label="WORKS" starting={true}>
+                        <NavLink label="ORION" link="/orion"/>
+                        <NavLink label="GALAXY" link="/galaxy"/>
+                    </NavSublinks>
+                    <NavLink label="CV" link="/cv"/>
                 </nav>
             </div>
+        </div>
+        <div className={style.toggleButton}>
+            <img src={logo}/>
+            <div className={style.visual}></div>
         </div>
     </div>
   )

@@ -1,0 +1,17 @@
+@use "../styles";
+
+.link {
+    height: 1em;
+    width: 100%;
+    line-height: inherit;
+    
+    a {
+        padding-left: 10%;
+    }
+
+    &.selected {
+        a {
+		    color: var(--c-accent-secondary) !important;
+        }
+    }
+}

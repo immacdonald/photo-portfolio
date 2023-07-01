@@ -1,0 +1,26 @@
+.sublinks {
+    height: fit-content;
+    line-height: inherit;
+
+	a {
+		padding-left: 10%;
+	}
+
+    > div {
+        overflow: hidden;
+        transition: height ease-in-out 0.5s;
+		height: fit-content;
+
+        > div {
+            font-size: 0.75em;
+
+			a {
+				padding-left: 15%;
+			}
+
+            &:first-of-type {
+                margin-top: 0;
+            }
+        }
+    }
+}
