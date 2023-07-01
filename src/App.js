@@ -8,16 +8,18 @@ import Sidebar from "./components/Sidebar";
 
 // Site-wide base styling
 import "./App.module.scss";
+import { Fragment } from "react";
 
 export default function App() {
   return(
-    <Routes>
-      <Route path="/" element={<Sidebar />}>
-          <Route index element={<Home />} />
-          <Route path="biography" element={<Biography />} />
-          <Route path="works" element={<Works />} />
-          <Route path="cv" element={<CV />} />
-      </Route>
-    </Routes>
-  )
+    <Fragment>
+      <Sidebar/>
+      <Routes>
+            <Route index element={<Home />} />
+            <Route path="biography" element={<Biography />} />
+            <Route path="works" element={<Works />} />
+            <Route path="cv" element={<CV />} />
+      </Routes>
+    </Fragment>
+  );
 }

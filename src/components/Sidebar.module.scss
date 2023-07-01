@@ -1,0 +1,86 @@
+$navWidth: 128px;
+$navToggleSize: 64px;
+$borderColor: black;
+$borderWidth: 1px;
+
+.sidebar {
+    position: absolute;
+    height: 100%;
+    width: $navWidth;
+    background-color: white;
+	border-right: $borderWidth solid $borderColor;	
+	z-index: 100;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebarContent {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+
+.navigation {
+	width: 100%;
+    height: 50%;
+}
+
+.links {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+    font-size: 32px;
+    line-height: 1;
+
+    a {
+        display: block;
+        width: 100%;
+        padding-top: 2px;
+        height: 1em;
+        color: var(--c-text-action);
+        cursor: pointer;
+
+        &:hover, &:focus {
+            color: var(--c-accent-primary);
+        }
+
+        &:active {
+            color: var(--c-text-action);
+        }
+    }
+
+    > div {
+        width: 100%;
+    }
+}
+
+.sublinks {
+    height: fit-content;
+    line-height: inherit;
+    padding-left: 10%;
+
+    > div {
+        overflow-y: hidden;
+        transition: height ease-in-out 0.5s;
+
+        > div {
+            font-size: 0.75em;
+
+            &:first-of-type {
+                margin-top: 0;
+            }
+        }
+    }
+}
+
+.link {
+    height: 1em;
+    width: 100%;
+    line-height: inherit;
+    
+    a {
+        padding-left: 10%;
+    }
+}
