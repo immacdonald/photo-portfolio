@@ -3,8 +3,9 @@
 .main {
     min-height: calc(100vh - s.$footerHeight - 4px);
 	padding-top: 4em;
-	width: calc(100vw - s.$sidebarWidth);
-	margin-left: s.$sidebarWidth;
+	width: calc(100vw - #{s.$sidebarWidth});
+	margin-left: var(--nav-width);
+	transition: margin ease-in-out 0.5s;
 }
 
 .responsiveWrapper {

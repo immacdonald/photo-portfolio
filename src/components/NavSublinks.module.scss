@@ -3,7 +3,7 @@
     line-height: inherit;
 
 	a {
-		padding-left: 10%;
+		//padding-left: 10%;
 	}
 
     > div {
@@ -13,14 +13,19 @@
 
         > div {
             font-size: 0.75em;
+			margin: 0.1em 0;
 
 			a {
-				padding-left: 15%;
+				//padding-left: 15%;
 			}
 
             &:first-of-type {
                 margin-top: 0;
             }
+
+			&:last-of-type {
+				margin-bottom: 0;
+			}
         }
     }
 }

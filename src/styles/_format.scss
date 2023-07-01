@@ -1,1 +1,5 @@
-$sidebarWidth: 100px;
+$sidebarWidth: 128px;
+
+:root {
+	--nav-width: #{$sidebarWidth};
+}

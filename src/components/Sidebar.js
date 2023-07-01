@@ -8,8 +8,20 @@ const Sidebar = () => {
 
     const logo = require("../static/images/icons/logo.png");
 
+    const [open, setOpen] = useState(true)
+    const [forceOpen, setForceOpen] = useState(true)
+
+    const toggleButton = () => {
+        setForceOpen(!forceOpen);
+    }
+
+    useEffect(() => {
+        const width = (open || forceOpen) ? "128px" : "0px"
+        document.documentElement.style.setProperty("--nav-width", width);
+    }, [open, forceOpen]);
+
     return (
-    <div className={style.sidebar}>
+    <div className={style.sidebar} onMouseEnter={(e) => {setOpen(true)}} onMouseLeave={(e) => {setOpen(false)}}>
         <div className={style.sidebarContent}>
             <div className={style.navigation}>
                 <nav className={style.links}>
@@ -23,7 +35,7 @@ const Sidebar = () => {
                 </nav>
             </div>
         </div>
-        <div className={style.toggleButton}>
+        <div className={style.toggleButton} onClick={toggleButton}>
             <img src={logo}/>
             <div className={style.visual}></div>
         </div>
