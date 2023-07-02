@@ -9,8 +9,8 @@
 
 	@media (max-width: 768px) {
 		transition: none;
-		width: 100%;
-		margin-left: 0px;
+		width: calc(100% - #{s.$sidebarToggle}/2);
+		margin-left: calc(#{s.$sidebarToggle}/2 + 8px);
 	}
 }
 

@@ -83,6 +83,7 @@ $borderWidth: 1px;
 		left: 10px;
 		width: calc(#{s.$sidebarToggle} - 10px);
 		z-index: 950;
+		filter: invert(var(--v-invert));
 	}
 
 
@@ -107,6 +108,7 @@ $borderWidth: 1px;
 
 	img {
 		width: 100%;
+		filter: invert(var(--v-invert));
 	}
 }
 

@@ -8,6 +8,7 @@
 	--c-background-primary: #F5F5F5;
 	--c-background-secondary: #fff;
 	--c-disabled-color: #cfd1d6;
+	--v-invert: 0;
 }
 
 :root[data-mode="dark"] {
@@ -20,4 +21,5 @@
 	--c-background-primary: #1c1c1c;
 	--c-background-secondary: #000;
 	--c-disabled-color: #302e29;
+	--v-invert: 1;
 }
