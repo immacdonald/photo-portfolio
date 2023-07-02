@@ -1,8 +1,8 @@
 :root {
 	--c-text-primary: #333;
 	--c-text-action: #636363;
-	--c-accent-primary: #c33;
-	--c-accent-secondary: rgb(254, 112, 112);
+	--c-accent-primary: rgb(88, 88, 88);
+	--c-accent-secondary: rgb(178, 178, 178);
 	--c-accent-text: #ffffff;
 	--c-border-primary: #eee;
 	--c-background-primary: #F5F5F5;
@@ -14,8 +14,8 @@
 :root[data-mode="dark"] {
 	--c-text-primary: #dddddd;
 	--c-text-action: #e7e7e7;
-	--c-accent-primary: rgb(194, 140, 192);
-	--c-accent-secondary: rgb(165, 83, 162);
+	--c-accent-primary: rgb(175, 175, 175);
+	--c-accent-secondary: rgb(148, 148, 148);
 	--c-accent-text: #fff;
 	--c-border-primary: #0d0b07;
 	--c-background-primary: #1c1c1c;
