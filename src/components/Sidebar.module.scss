@@ -13,8 +13,9 @@ $borderWidth: 1px;
 	z-index: 100;
     display: flex;
     flex-direction: column;
-	transform: translateX(min(calc(-128px + var(--nav-width)), 0px));
-	transition: transform ease-in-out 0.5s;
+	transform: translateX(min(calc(-#{s.$sidebarWidth} + var(--nav-width) + #{s.$sidebarPoke}), 0px));
+	transition: transform ease 0.5s;
+	padding: 0 8px;
 }
 
 .sidebarContent {
@@ -35,24 +36,24 @@ $borderWidth: 1px;
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
-    font-size: 32px;
+    font-size: 36px;
     line-height: 1;
 	text-transform: uppercase;
 	margin-top: 1em;
-	text-align: center;
+	//text-align: center;
 
     a {
         display: block;
         width: 100%;
         padding-top: 2px;
         height: 1em;
-        color: var(--c-text-action);
+        color: var(--c-text-primary);
 		transition: color ease 0.5s;
         cursor: pointer;
 		letter-spacing: .025em;
 
         &:hover, &:focus, &:active {
-            color: var(--c-accent-primary);
+            color: var(--c-text-action);
         }
     }
 

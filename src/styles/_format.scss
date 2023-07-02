@@ -1,6 +1,8 @@
 $sidebarWidth: 128px;
+$sidebarPoke: 12px;
 $footerHeight: 32px;
 
 :root {
 	--nav-width: #{$sidebarWidth};
+    --nav-width-open: var(--nav-width);
 }

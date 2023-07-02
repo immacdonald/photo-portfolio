@@ -10,19 +10,20 @@ const Sidebar = () => {
     const logo = require("../static/images/icons/logo.png");
 
     const [open, setOpen] = useState(true)
-    const [forceOpen, setForceOpen] = useState(true)
+    const [forceOpen, setForceOpen] = useState(false)
 
     const toggleButton = () => {
-        setForceOpen(!forceOpen);
+        //setForceOpen(!forceOpen);
+        setOpen(!open);
     }
 
     useEffect(() => {
-        const width = (open || forceOpen) ? "128px" : "0px"
+        const width = (open || forceOpen) ? document.documentElement.style.getPropertyValue("--nav-width-open") : "0px"
         document.documentElement.style.setProperty("--nav-width", width);
     }, [open, forceOpen]);
 
     return (
-    <div className={style.sidebar} onMouseEnter={(e) => {setOpen(true)}} onMouseLeave={(e) => {setOpen(false)}}>
+    <div className={style.sidebar} /*onMouseEnter={(e) => {setOpen(true)}} onMouseLeave={(e) => {setOpen(false)}}*/>
         <div className={style.sidebarContent}>
             <div className={style.signature}>
                 <img src={signature}/>
