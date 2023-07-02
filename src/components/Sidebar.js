@@ -39,6 +39,14 @@ const Sidebar = () => {
                     <NavLink label="CV" link="/cv"/>
                 </nav>
             </div>
+            <div className={style.socials}>
+                <div className={style.socialsText}>Contact Me</div>
+                <div className={style.socialsLinks}>
+                    <div>Text</div>
+                    <div>Text</div>
+                    <div>Text</div>
+                </div>
+            </div>
         </div>
         <div className={style.toggleButton} onClick={toggleButton}>
             <img className="logo" src={logo}/>

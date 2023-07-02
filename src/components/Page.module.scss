@@ -4,8 +4,14 @@
     min-height: calc(100vh - s.$footerHeight - 4px);
 	padding-top: 4em;
 	width: calc(100vw - #{s.$sidebarWidth});
-	margin-left: calc(max(calc(var(--nav-width) - #{s.$sidebarPoke}), 0px) + 25px);
+	margin-left: calc(max(calc(var(--nav-width) - #{s.$sidebarPoke}), 0px) + #{s.$sidebarToggle}/2);
 	transition: margin ease 0.5s;
+
+	@media (max-width: 768px) {
+		transition: none;
+		width: 100%;
+		margin-left: 0px;
+	}
 }
 
 .responsiveWrapper {

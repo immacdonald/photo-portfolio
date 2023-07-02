@@ -1,6 +1,5 @@
 @use "../styles" as s;
 
-$navToggleSize: 50px;
 $borderColor: var(--c-border-primary);
 $borderWidth: 1px;
 
@@ -15,7 +14,7 @@ $borderWidth: 1px;
     flex-direction: column;
 	transform: translateX(min(calc(-#{s.$sidebarWidth} + var(--nav-width) + #{s.$sidebarPoke}), 0px));
 	transition: transform ease 0.5s;
-	padding: 0 8px;
+	padding: 0 s.$sidebarPadding;
 }
 
 .sidebarContent {
@@ -65,11 +64,11 @@ $borderWidth: 1px;
 
 .toggleButton {
 	position: absolute;
-	top: calc(50% - #{$navToggleSize}/2);
-	right: calc(-#{$navToggleSize}/2);
-	width: $navToggleSize;
-	height: $navToggleSize;
-	border-radius: calc(#{$navToggleSize}/2);
+	top: calc(50% - #{s.$sidebarToggle}/2);
+	right: calc(-#{s.$sidebarToggle}/2);
+	width: s.$sidebarToggle;
+	height: s.$sidebarToggle;
+	border-radius: calc(#{s.$sidebarToggle}/2);
 	background-color: var(--c-background-secondary);
 	transition: background-color ease 0.5s;
 
@@ -81,7 +80,7 @@ $borderWidth: 1px;
 		position: absolute;
 		top: 5px;
 		left: 10px;
-		width: calc(#{$navToggleSize} - 10px);
+		width: calc(#{s.$sidebarToggle} - 10px);
 		z-index: 950;
 	}
 
@@ -91,8 +90,8 @@ $borderWidth: 1px;
 		left: 50%;
 		width: 50%;
 		height: 100%;
-		border-top-right-radius: calc(#{$navToggleSize} + #{$borderWidth});
-		border-bottom-right-radius: calc(#{$navToggleSize} + #{$borderWidth});
+		border-top-right-radius: calc(#{s.$sidebarToggle} + #{$borderWidth});
+		border-bottom-right-radius: calc(#{s.$sidebarToggle} + #{$borderWidth});
 		border: $borderWidth solid $borderColor;
 		border-left: 0;
 	}
@@ -109,10 +108,27 @@ $borderWidth: 1px;
 	}
 }
 
-.menuSocials {
+.socials {
 	width: 100%;
-	height: 300px;
-	padding-left: 10px;
+}
+
+.socialsText {
+	font-size: 24px;
+	text-align: center;
+}
+
+.socialsLinks {
+	background-color: green;
+	display: flex;
+
+	> div {
+		flex-grow: 1;
+		aspect-ratio: 1;
+		background-color: purple;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
 }
 
 .socialMedia {
