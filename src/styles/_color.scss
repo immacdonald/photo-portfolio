@@ -1,16 +1,23 @@
-$footerHeight: 32px;
-
 :root {
 	--c-text-primary: #333;
-	--c-text-secondary: #686b87;
-	--c-text-action: #333;
-	--c-text-accent: #ffffff;
-	--c-accent-primary: #6d6d6d;
-	--c-accent-secondary: #ff2e51;
-	--c-border-primary: #f2f4f8;
+	--c-text-action: #505050;
+	--c-accent-primary: #c33;
+	--c-accent-secondary: rgb(254, 112, 112);
+	--c-accent-text: #ffffff;
+	--c-border-primary: #eee;
 	--c-background-primary: #F5F5F5;
-	--c-background-secondary: #fdbcb8;
-	--c-background-tertiary: #f2f4f8;
-	--c-disabled-background: #f2f4f8;
+	--c-background-secondary: #fff;
 	--c-disabled-color: #cfd1d6;
+}
+
+:root[data-mode="dark"] {
+	--c-text-primary: #dddddd;
+	--c-text-action: #e7e7e7;
+	--c-accent-primary: rgb(194, 140, 192);
+	--c-accent-secondary: rgb(165, 83, 162);
+	--c-accent-text: #fff;
+	--c-border-primary: #0d0b07;
+	--c-background-primary: #1c1c1c;
+	--c-background-secondary: #000;
+	--c-disabled-color: #302e29;
 }

@@ -1,19 +1,20 @@
 @use "../styles" as s;
 
 $navToggleSize: 50px;
-$borderColor: black;
-$borderWidth: 0px;
+$borderColor: var(--c-border-primary);
+$borderWidth: 1px;
 
 .sidebar {
     position: fixed;
     height: 100%;
-    width: var(--nav-width);
-    background-color: white;
+    width: s.$sidebarWidth;
+    background-color: var(--c-background-secondary);
 	border-right: $borderWidth solid $borderColor;	
 	z-index: 100;
     display: flex;
     flex-direction: column;
-	transition: width ease-in-out 0.5s;
+	transform: translateX(min(calc(-128px + var(--nav-width)), 0px));
+	transition: transform ease-in-out 0.5s;
 }
 
 .sidebarContent {
@@ -37,8 +38,7 @@ $borderWidth: 0px;
     font-size: 32px;
     line-height: 1;
 	text-transform: uppercase;
-	font-weight: 600;
-	margin-top: 10vh;
+	margin-top: 1em;
 	text-align: center;
 
     a {
@@ -47,16 +47,13 @@ $borderWidth: 0px;
         padding-top: 2px;
         height: 1em;
         color: var(--c-text-action);
+		transition: color ease 0.5s;
         cursor: pointer;
-		letter-spacing: .05em;
+		letter-spacing: .025em;
 
-        &:hover, &:focus {
+        &:hover, &:focus, &:active {
             color: var(--c-accent-primary);
         }
-
-		&:active {
-			color: var(--c-text-action);
-		}
     }
 
     > div {
@@ -71,8 +68,13 @@ $borderWidth: 0px;
 	right: calc(-#{$navToggleSize}/2);
 	width: $navToggleSize;
 	height: $navToggleSize;
-	background-color: white;
 	border-radius: calc(#{$navToggleSize}/2);
+	background-color: var(--c-background-secondary);
+	transition: background-color ease 0.5s;
+
+	&:hover {
+		background-color: $borderColor;
+	}
 
 	img {
 		position: absolute;
@@ -92,16 +94,13 @@ $borderWidth: 0px;
 		border-bottom-right-radius: calc(#{$navToggleSize} + #{$borderWidth});
 		border: $borderWidth solid $borderColor;
 		border-left: 0;
-		background-color: white;
 	}
 }
 
-.menuLogo {
-	color: black;
-    background-color: blue;
+.signature {
 	width: 100%;
-	height: 80px;
-	padding: 1rem;
+	padding: 0.25em;
+	margin-top: 2em;
 	text-align: center;
 
 	img {

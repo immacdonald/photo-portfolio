@@ -6,6 +6,7 @@ import NavSublinks from "./NavSublinks";
 
 const Sidebar = () => {
 
+    const signature = require("../static/images/icons/signature.png");
     const logo = require("../static/images/icons/logo.png");
 
     const [open, setOpen] = useState(true)
@@ -23,6 +24,9 @@ const Sidebar = () => {
     return (
     <div className={style.sidebar} onMouseEnter={(e) => {setOpen(true)}} onMouseLeave={(e) => {setOpen(false)}}>
         <div className={style.sidebarContent}>
+            <div className={style.signature}>
+                <img src={signature}/>
+            </div>
             <div className={style.navigation}>
                 <nav className={style.links}>
                     <NavLink label="Home" link="/"/>
