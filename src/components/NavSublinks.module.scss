@@ -1,9 +1,14 @@
+@use "../styles";
+
 .sublinks {
-    height: fit-content;
     line-height: inherit;
 
 	a {
 		//padding-left: 10%;
+		
+		&.selected:not(.open) {
+			color: var(--c-accent-primary);
+		}
 	}
 
     > div {

@@ -27,16 +27,16 @@ const Sidebar = () => {
                 <nav className={style.links}>
                     <NavLink label="Home" link="/"/>
                     <NavLink label="Bio" link="/biography"/>
-                    <NavSublinks label="Works" starting={true}>
-                        <NavLink label="Orion" link="/orion"/>
-                        <NavLink label="Galaxy" link="/galaxy"/>
+                    <NavSublinks label="Works" baseLink="/works" starting={true}>
+                        <NavLink label="Orion" link="/works/orion"/>
+                        <NavLink label="Galaxy" link="/works/galaxy"/>
                     </NavSublinks>
                     <NavLink label="CV" link="/cv"/>
                 </nav>
             </div>
         </div>
         <div className={style.toggleButton} onClick={toggleButton}>
-            <img src={logo}/>
+            <img className="logo" src={logo}/>
             <div className={style.visual}></div>
         </div>
     </div>
