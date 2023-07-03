@@ -1,6 +1,7 @@
 import style from "./Page.module.scss";
 import React, { useContext, useEffect } from "react";
 import { WebsiteContext } from "../contexts/WebsiteContext";
+import Footer from "./Footer";
 import classNames from "classnames";
 
 const Page = (props) => {
@@ -33,13 +34,7 @@ const Page = (props) => {
                     <main className={style.mainContent}>
                         {children}
                     </main>
-                    <footer>
-                        <div className={style.footer}>
-                            <div className={style.footerContent}>
-                                <p>&copy; Kam Lin 2023 & Website by Ian MacDonald </p>
-                            </div>
-                        </div>
-                    </footer>
+                    <Footer/>
                 </div>
             </div>
         </div>

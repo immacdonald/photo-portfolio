@@ -58,20 +58,3 @@
 	margin-right: auto;
 	pointer-events: auto;
 }
-
-footer {
-	width: 100%;
-	height: s.$footerHeight;
-}
-
-.footer {
-	justify-content: center;
-	display: flex;
-	border-top: 1px solid var(--c-border-primary);
-
-	.footerContent {
-		@include s.bodyText;
-		margin-top: 6px;
-		font-size: 14px;
-	}
-}
