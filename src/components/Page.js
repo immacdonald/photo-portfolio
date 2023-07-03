@@ -1,15 +1,26 @@
 import style from "./Page.module.scss";
+import React, { useContext, useEffect } from "react";
+import { WebsiteContext } from "../contexts/WebsiteContext";
+import classNames from "classnames";
 
 const Page = (props) => {
-    const { children, forceMode = false} = props;
-    if(forceMode) {
-        document.documentElement.setAttribute('data-mode', forceMode);
+    const { children, forceTheme = false} = props;
+
+    const { theme, sidebar } = useContext(WebsiteContext);
+
+    if(forceTheme) {
+        document.documentElement.setAttribute('data-mode', forceTheme);
     } else {
-        document.documentElement.setAttribute('data-mode', "light");
+        document.documentElement.setAttribute('data-mode', theme);
     }
+
+    const mainClasses = classNames(style.main, {
+        [style.full]: !sidebar
+    });
+
     return (
         <div>
-            <div className={style.main}>
+            <div className={mainClasses}>
                 <div className={style.responsiveWrapper}>
                     <main className={style.mainContent}>
                         {children}
