@@ -1,8 +1,9 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import style from "./Sidebar.module.scss";
 import NavLink from "./NavLink";
 import NavSublinks from "./NavSublinks";
+import { WebsiteContext } from "../contexts/WebsiteContext";
 
 import { ReactComponent as Instagram } from "../static/images/icons/instagram.svg";
 import { ReactComponent as LinkedIn } from "../static/images/icons/linkedin.svg";
@@ -15,18 +16,18 @@ const Sidebar = () => {
     const signature = require("../static/images/icons/signature.png");
     const logo = require("../static/images/icons/logo.png");
 
-    const [open, setOpen] = useState(true)
+    const { sidebar, setSidebar, theme, setTheme } = useContext(WebsiteContext);
     const [forceOpen, setForceOpen] = useState(false)
 
     const toggleButton = () => {
         //setForceOpen(!forceOpen);
-        setOpen(!open);
+        setSidebar(!sidebar);
     }
 
     useEffect(() => {
-        const width = (open || forceOpen) ? document.documentElement.style.getPropertyValue("--nav-width-open") : "0px"
+        const width = (sidebar || forceOpen) ? document.documentElement.style.getPropertyValue("--nav-width-open") : "0px"
         document.documentElement.style.setProperty("--nav-width", width);
-    }, [open, forceOpen]);
+    }, [sidebar, forceOpen]);
 
 
     const defaultContactText = "Contact Me"
@@ -67,7 +68,7 @@ const Sidebar = () => {
     return (
     <div className={style.sidebar} /*onMouseEnter={(e) => {setOpen(true)}} onMouseLeave={(e) => {setOpen(false)}}*/>
         <div className={style.sidebarContent}>
-            <div className={style.signature}>
+            <div className={style.signature} onClick={(e) => {theme === "light" ? setTheme("dark") : setTheme("light")}}>
                 <img src={signature}/>
             </div>
             <div className={style.navigation}>
