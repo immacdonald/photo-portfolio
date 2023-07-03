@@ -13,7 +13,7 @@
 }
 
 .mainContent {
-	min-height: calc(100vh - s.$footerHeight - 4px);
+	height: calc(100vh - s.$footerHeight - 4px);
 	padding-top: 4em;
 }
 

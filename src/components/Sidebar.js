@@ -76,7 +76,7 @@ const Sidebar = () => {
                     <NavLink label="Biography" link="/biography"/>
                     <NavSublinks label="Works" baseLink="/works" starting={true}>
                         <NavLink label="Orion" link="/works/orion"/>
-                        <NavLink label="Galaxy" link="/works/galaxy"/>
+                        <NavLink label="Tub" link="/works/tub"/>
                     </NavSublinks>
                     <NavLink label="CV" link="/cv"/>
                 </nav>
