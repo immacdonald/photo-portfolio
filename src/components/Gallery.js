@@ -15,56 +15,25 @@ import { useState, useEffect } from "react";
 import "./Gallery.module.scss";
 
 const Gallery = (props) => {
-    const { photos, path, additionalDescription } = props;
+    const { photos, path, description = "" } = props;
+
     const [index, setIndex] = useState(-1);
     const [loadedPhotos, setPhotos] = useState([]);
 
-    const photoDetails = [
-        { "title": "Car Frame", "path": "untitled_01" },
-        { "title": "Reverse 01", "path": "untitled_02" },
-        { "title": "Untitled", "path": "untitled_03" },
-        { "title": "Tire", "path": "untitled_04" },
-        { "title": "Electric", "path": "untitled_05" },
-        { "title": "Me", "path": "untitled_06" },
-        { "title": "Reverse 02", "path": "untitled_07" },
-        { "title": "Ribs", "path": "untitled_08" },
-        { "title": "Shopping Carts", "path": "untitled_09" },
-        { "title": "Reverse 03", "path": "untitled_10" },
-        { "title": "Kentucky", "path": "untitled_11" },
-        { "title": "Station", "path": "untitled_12" },
-        { "title": "Current", "path": "untitled_13" },
-        { "title": "Shake", "path": "untitled_14" },
-        { "title": "Grip", "path": "untitled_15" },
-        { "title": "Untitled", "path": "untitled_16" },
-        { "title": "Reverse 04", "path": "untitled_17" },
-        { "title": "Untitled", "path": "untitled_18" },
-        { "title": "Grind", "path": "untitled_19" },
-        { "title": "Knees", "path": "untitled_20" },
-        { "title": "Reverse 05", "path": "untitled_21" },
-        { "title": "Release", "path": "untitled_22" },
-        { "title": "Projected", "path": "untitled_23" },
-        { "title": "Reverse 06", "path": "untitled_24" },
-        { "title": "Silhouette", "path": "untitled_25" },
-        { "title": "Reverse 07", "path": "untitled_26" },
-        { "title": "Light Tunnel", "path": "untitled_27" },
-        { "title": "Reverse 08", "path": "untitled_28" },
-        { "title": "Reflection", "path": "untitled_29" },
-        { "title": "Wrung", "path": "untitled_30" }
-    ];
-
     const loadImages = async () => {
-        const imagePromises = photoDetails.map(async (identifier) => {
-          const imageModule = await import(`../static/images/works/orion/${identifier.path}.jpg`);
+        const imagePromises = photos.map(async (photo) => {
+          const imageModule = await import(`../static/images/${path}/${photo.file}.jpg`);
           return imageModule.default;
         });
       
         const images = await Promise.all(imagePromises);
         const good = images.map((image, i) => {
+            const photoDescription = description ? `${photos[i].title} \n ${description}` : photos[i].title;
             return {
                 src: image,
                 width: 1000,
                 height: 1000,
-                description: photoDetails[i].title
+                description: photoDescription
             }
         })
         setPhotos(good);
