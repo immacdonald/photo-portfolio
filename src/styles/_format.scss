@@ -6,8 +6,3 @@ $sidebarToggle: 64px;
 
 // Footer
 $footerHeight: 32px;
-
-:root {
-	--nav-width: #{$sidebarWidth};
-    --nav-width-open: var(--nav-width);
-}
