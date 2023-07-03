@@ -12,24 +12,46 @@ import Sidebar from "./components/Sidebar";
 import "./App.module.scss";
 import { Fragment } from "react";
 import { WebsiteContext, WebsiteContextProvider } from "./contexts/WebsiteContext";
+import useWindowSize from "./hooks/useWindowSize";
 
 export default function App() {
-    const { theme, setTheme, mobile, setMobile, sidebar, setSidebar } = useContext(WebsiteContext);
+    return (
+      <Fragment>
+        <WebsiteContextProvider>
+          <AppContent />
+        </WebsiteContextProvider>
+      </Fragment>
+    );
+  }  
 
-  return(
-    <Fragment>
-      <WebsiteContextProvider>
-        <Sidebar/>
+function AppContent() {
+    const { theme, setTheme, mobile, setMobile, sidebar, setSidebar } = useContext(WebsiteContext);
+  
+    const [width, height] = useWindowSize();
+    const mobileThreshold = 768;
+  
+    useEffect(() => {
+      if (width) {
+        setMobile(width <= mobileThreshold);
+      }
+    }, [width, setMobile]);
+
+    useEffect(() => {
+        document.body.style.overflow = (mobile && sidebar) ? "hidden" : "";
+    }, [mobile, sidebar])
+  
+    return (
+      <Fragment>
+        <Sidebar />
         <Routes>
-              <Route index element={<Home />} />
-              <Route path="biography" element={<Biography />} />
-              <Route path="works">
-                <Route path="orion" element={<Orion />} />
-                <Route path="tub" element={<Orion />} />
-              </Route>
-              <Route path="cv" element={<CV />} />
+          <Route index element={<Home />} />
+          <Route path="biography" element={<Biography />} />
+          <Route path="works">
+            <Route path="orion" element={<Orion />} />
+            <Route path="tub" element={<Orion />} />
+          </Route>
+          <Route path="cv" element={<CV />} />
         </Routes>
-      </WebsiteContextProvider>
-    </Fragment>
-  );
-}
+      </Fragment>
+    );
+  }

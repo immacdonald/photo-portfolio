@@ -6,7 +6,7 @@ import classNames from "classnames";
 const Page = (props) => {
     const { children, forceTheme = false} = props;
 
-    const { theme, sidebar } = useContext(WebsiteContext);
+    const { theme, sidebar, mobile } = useContext(WebsiteContext);
 
     if(forceTheme) {
         document.documentElement.setAttribute('data-mode', forceTheme);
@@ -14,12 +14,18 @@ const Page = (props) => {
         document.documentElement.setAttribute('data-mode', theme);
     }
 
-    const mainClasses = classNames(style.main, {
-        [style.full]: !sidebar
-    });
+    const mainClasses = classNames(
+        style.main, 
+        {
+            [style.full]: !sidebar
+        },
+        {
+            [style.mobile]: mobile
+        }
+    );
 
     return (
-        <div>
+        <div className={style.mainContainer}>
             <div className={mainClasses}>
                 <div className={style.responsiveWrapper}>
                     <main className={style.mainContent}>

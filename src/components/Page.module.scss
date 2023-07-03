@@ -1,5 +1,11 @@
 @use "../styles" as s;
 
+.mainContainer {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
 .main {
 	width: calc(100vw - #{s.$sidebarToggle}/2 - #{s.$sidebarWidth});
 	margin-left: calc(#{s.$sidebarWidth} - #{s.$sidebarPoke} + #{s.$sidebarToggle}/2);
@@ -8,6 +14,7 @@
 	&::after {
 		content: "";
 		background-color: black;
+		pointer-events: none;
 		position: fixed;
 		top: 0;
 		left: 0;
@@ -17,20 +24,24 @@
 		transition: opacity ease 0.5s;
 	}
 
-	@media (max-width: 768px) {
+	&.mobile {
 		transition: none;
 		width: calc(100vw - #{s.$sidebarToggle}/2);
 		margin-left: calc(#{s.$sidebarToggle}/2 + #{s.$sidebarPoke});
-	}
 
-	&:not(.full) {
-		&::after {
-			opacity: 0.5;
+		&:not(.full) {
+			user-select: none;
+			pointer-events: none;
+
+			&::after {
+				opacity: 0.5;
+				pointer-events: initial;
+			}
 		}
 	}
 
 	&.full {
-		width: calc(100vw - #{s.$sidebarToggle}/2);
+		//width: calc(100vw - #{s.$sidebarToggle}/2);
 		margin-left: calc(#{s.$sidebarToggle}/2 + #{s.$sidebarPoke});
 	}
 }
@@ -63,13 +74,4 @@ footer {
 		margin-top: 6px;
 		font-size: 14px;
 	}
-}
-
-.mobile body::after {
-	
-}
-
-.mobile {
-	user-select: none;
-	pointer-events: none;
 }

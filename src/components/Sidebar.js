@@ -16,7 +16,7 @@ const Sidebar = () => {
     const signature = require("../static/images/icons/signature.png");
     const logo = require("../static/images/icons/logo.png");
 
-    const { sidebar, setSidebar, theme, setTheme } = useContext(WebsiteContext);
+    const { sidebar, setSidebar, theme, setTheme, mobile } = useContext(WebsiteContext);
     const [forceOpen, setForceOpen] = useState(false)
 
     const toggleButton = () => {

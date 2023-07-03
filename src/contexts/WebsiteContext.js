@@ -9,7 +9,6 @@ export const WebsiteContextProvider = (props) => {
 
     const setSidebar = (state) => {
         setSidebarState(state);
-        console.log(document.body.style.overflow)
         document.body.style.overflow = state ? "hidden" : "";
     }
   
