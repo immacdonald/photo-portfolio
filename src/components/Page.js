@@ -8,12 +8,14 @@ const Page = (props) => {
 
     const { theme, sidebar, mobile } = useContext(WebsiteContext);
 
+    // A specific site theme can be forced for particular pages, overriding user's preferences
     if(forceTheme) {
         document.documentElement.setAttribute('data-mode', forceTheme);
     } else {
         document.documentElement.setAttribute('data-mode', theme);
     }
 
+    // Style the main page body based on if the sidebar is open and if the device is mobile
     const mainClasses = classNames(
         style.main, 
         {

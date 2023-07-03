@@ -1,5 +1,4 @@
-import React, { useState, useRef, useEffect, useContext } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useContext } from "react";
 import style from "./Sidebar.module.scss";
 import NavLink from "./NavLink";
 import NavSublinks from "./NavSublinks";
@@ -11,12 +10,13 @@ import { ReactComponent as Email } from "../static/images/icons/mail.svg";
 import classNames from "classnames";
 
 const Sidebar = () => {
-
+    // Required graphics for the sidebar
     const signature = require("../static/images/icons/signature.png");
     const logo = require("../static/images/icons/logo.png");
 
     const { sidebar, setSidebar, theme, setTheme, mobile } = useContext(WebsiteContext);
 
+    // Sidebar can be controlled via hover or click
     const toggleSidebar = () => {
         setSidebar(!sidebar);
     }
@@ -27,6 +27,7 @@ const Sidebar = () => {
         }
     }
 
+    // Social media buttons dynamically set the display and link text
     const defaultContactText = "Contact Me"
     const [contact, setContact ] = useState(defaultContactText)
     const [contactLink, setContactLink] = useState(null);
@@ -62,6 +63,7 @@ const Sidebar = () => {
         }
     ]
 
+    // Sidebar changes style based on if it is in an open or closed state
     const sidebarClasses = classNames(
         style.sidebar, 
         {
