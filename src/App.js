@@ -2,7 +2,7 @@ import { Routes, Route } from "react-router-dom";
 
 import Home from "./pages/Home";
 import Biography from "./pages/Biography";
-import Works from "./pages/Works";
+import Orion from "./pages/Orion";
 import CV from "./pages/CV";
 import Sidebar from "./components/Sidebar";
 
@@ -17,7 +17,7 @@ export default function App() {
       <Routes>
             <Route index element={<Home />} />
             <Route path="biography" element={<Biography />} />
-            <Route path="works" element={<Works />} />
+            <Route path="works/orion" element={<Orion />} />
             <Route path="cv" element={<CV />} />
       </Routes>
     </Fragment>

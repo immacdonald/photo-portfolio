@@ -1,10 +1,12 @@
-import style from "./Works.module.scss"
+import style from "./Orion.module.scss"
 import Page from "../components/Page";
+import Gallery from "../components/Gallery";
 
-const Works = () => {
+const Orion = () => {
     return (
         <Page>
-            <h1>Works</h1>
+            <h1>Orion</h1>
+            <Gallery/>
             <div className={style.bodyText}>
                 <div>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
@@ -19,4 +21,4 @@ const Works = () => {
     );
 };
   
-export default Works;
+export default Orion;
