@@ -1,8 +1,15 @@
 [class*="yarl__thumbnails_thumbnail"] { 
     background-color: white;
-    //border: none;
 }
 
 [class*="yarl__slide_captions_container"] {
     background-color: black;
+}
+
+[class*="react-photo-album--photo"] {
+    transition: filter ease 0.5s;
+
+    &:hover {
+        filter: brightness(0.9);
+    }
 }

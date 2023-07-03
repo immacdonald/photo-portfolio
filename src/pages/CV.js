@@ -4,23 +4,17 @@ import Page from "../components/Page";
 const CV = () => {
     return (
         <Page>
-            <h1>CV</h1>
+            <h1>Curriculum Vitae</h1>
             <div className={style.bodyText}>
                 <div>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                    Aliquet lectus proin nibh nisl condimentum id venenatis a condimentum. Amet nulla facilisi morbi tempus iaculis urna. 
-                    Ac auctor augue mauris augue neque gravida in fermentum et. Interdum varius sit amet mattis. Nunc mi ipsum faucibus vitae aliquet. 
-                    Non diam phasellus vestibulum lorem. Facilisi nullam vehicula ipsum a arcu cursus vitae congue mauris. 
-                    Sit amet nisl purus in mollis nunc sed. Nibh sit amet commodo nulla. 
-                    Purus non enim praesent elementum facilisis leo. In egestas erat imperdiet sed euismod.
+                    <p><b>Education</b></p>
+                    <p><i>College of William & Mary</i>, 2023</p>
+                    <p>Bachelor of Arts in History</p>
+                    <p>Minor in Studio Arts and Art History</p>
                 </div>
                 <div>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                    Aliquet lectus proin nibh nisl condimentum id venenatis a condimentum. Amet nulla facilisi morbi tempus iaculis urna. 
-                    Ac auctor augue mauris augue neque gravida in fermentum et. Interdum varius sit amet mattis. Nunc mi ipsum faucibus vitae aliquet. 
-                    Non diam phasellus vestibulum lorem. Facilisi nullam vehicula ipsum a arcu cursus vitae congue mauris. 
-                    Sit amet nisl purus in mollis nunc sed. Nibh sit amet commodo nulla. 
-                    Purus non enim praesent elementum facilisis leo. In egestas erat imperdiet sed euismod.
+                    <p><b>Exhibitions</b></p>
+                    <p>2023 Non-Majors Art Show at William & Mary</p>
                 </div>
             </div>
         </Page>

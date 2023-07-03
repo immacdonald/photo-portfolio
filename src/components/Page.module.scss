@@ -1,8 +1,6 @@
 @use "../styles" as s;
 
 .main {
-    min-height: calc(100vh - s.$footerHeight - 4px);
-	padding-top: 4em;
 	width: calc(100vw #{s.$sidebarToggle}/2 - var(--nav-width));
 	margin-left: calc(max(calc(var(--nav-width) - #{s.$sidebarPoke}), 0px) + #{s.$sidebarToggle}/2);
 	transition: margin ease 0.5s;
@@ -12,6 +10,11 @@
 		width: calc(100% - #{s.$sidebarToggle}/2);
 		margin-left: calc(#{s.$sidebarToggle}/2 + 8px);
 	}
+}
+
+.mainContent {
+	min-height: calc(100vh - s.$footerHeight - 4px);
+	padding-top: 4em;
 }
 
 .responsiveWrapper {
