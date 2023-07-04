@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkphoto_portfolio=self.webpackChunkphoto_portfolio||[]).push([[8346],{8346:function(o,t,e){o.exports=e.p+"static/media/untitled_01.a56b8eb218c94e88bec5.jpg"}}]);
