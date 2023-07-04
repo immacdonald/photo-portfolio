@@ -1,8 +1,8 @@
-import style from "./Home.module.scss";
-import Page from "../components/Page";
 import React, { useState, useEffect } from 'react';
+import style from './Home.module.scss';
+import Page from '../components/Page';
 
-const Home = () => {
+function Home() {
     const [currentIndex, setCurrentIndex] = useState(0);
     const backgroundImages = [
         require('../static/images/background/background_01.jpg'),
@@ -11,7 +11,7 @@ const Home = () => {
         require('../static/images/background/background_04.jpg'),
         require('../static/images/background/background_05.jpg'),
         require('../static/images/background/background_06.jpg'),
-        require('../static/images/background/background_07.jpg')
+        require('../static/images/background/background_07.jpg'),
     ];
 
     useEffect(() => {
@@ -24,21 +24,21 @@ const Home = () => {
         };
     }, [backgroundImages.length]);
 
-    document.documentElement.setAttribute('data-mode', "dark");
+    document.documentElement.setAttribute('data-mode', 'dark');
 
     const glowingSignature = require('../static/images/icons/signature-glow.png');
 
     return (
         <div className={style.defaultBackground}>
             <div className={style.background} style={{ backgroundImage: `url(${backgroundImages[currentIndex]})` }}>
-                <Page forceTheme="dark" altFooter={true}>
+                <Page forceTheme="dark" altFooter>
                     <div className={style.signatureWrapper}>
-                        <img src={glowingSignature} className={style.glowingSignature} draggable="false"/>
+                        <img src={glowingSignature} className={style.glowingSignature} draggable="false" alt="Kam's Signature, Glowing" />
                     </div>
                 </Page>
             </div>
         </div>
     );
-};
-  
+}
+
 export default Home;
