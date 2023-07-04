@@ -121,7 +121,8 @@ $borderWidth: 1px;
 
 .socials {
 	width: 100%;
-	padding: 2.5vh 0;
+	padding-top: 2.5vh;
+	padding-bottom: 1vh;
 	cursor: pointer;
 }
 
@@ -144,6 +145,29 @@ $borderWidth: 1px;
 		align-items: center;
 		justify-content: center;
 	}
+}
+
+.theme {
+	width: 100%;
+	border-top: 1px solid var(--c-border-primary);
+	padding-top: 8px;
+}
+
+.themeInner {
+	display: flex;
+	align-items: center;
+	padding: 0 12px;
+}
+
+.themeToggle {
+	width: 20px;
+	aspect-ratio: 1;
+	color: var(--c-accent-primary);
+}
+
+.themeLabel {
+	margin-left: 0.5em;
+	font-size: 16px;
 }
 
 .iconButton {

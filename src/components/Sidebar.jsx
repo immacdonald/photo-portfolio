@@ -8,6 +8,7 @@ import { WebsiteContext } from '../contexts/WebsiteContext';
 import { ReactComponent as Instagram } from '../static/images/icons/instagram.svg';
 import { ReactComponent as LinkedIn } from '../static/images/icons/linkedin.svg';
 import { ReactComponent as Email } from '../static/images/icons/mail.svg';
+import { ReactComponent as Bulb } from '../static/images/icons/bulb.svg';
 
 function Sidebar() {
     // Required graphics for the sidebar
@@ -66,6 +67,12 @@ function Sidebar() {
     ];
 
     const toggleTheme = () => (theme === 'light' ? setTheme('dark') : setTheme('light'));
+    const oppositeTheme = (currentTheme) => {
+        if (currentTheme === 'light') {
+            return 'dark';
+        }
+        return 'light';
+    };
 
     // Sidebar changes style based on if it is in an open or closed state
     const sidebarClasses = classNames(
@@ -78,7 +85,7 @@ function Sidebar() {
     return (
         <div className={sidebarClasses} onMouseEnter={() => { hoverSidebar(true); }} onMouseLeave={() => { hoverSidebar(false); }}>
             <div className={style.sidebarContent}>
-                <div className={style.signature} role="presentation" onClick={toggleTheme} onKeyDown={toggleTheme}>
+                <div className={style.signature}>
                     <img src={signature} alt="Kam's Signature" />
                 </div>
                 <div className={style.navigation}>
@@ -102,6 +109,16 @@ function Sidebar() {
                                 </div>
                             </div>
                         ))}
+                    </div>
+                </div>
+                <div className={style.theme} role="presentation" onClick={toggleTheme} onKeyDown={toggleTheme}>
+                    <div className={style.themeInner}>
+                        <div className={style.themeToggle}>
+                            <Bulb />
+                        </div>
+                        <div className={style.themeLabel}>
+                            {`Toggle ${oppositeTheme(theme)} Theme`}
+                        </div>
                     </div>
                 </div>
             </div>
