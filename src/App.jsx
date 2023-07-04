@@ -23,7 +23,7 @@ export default function App() {
 
 function AppContent() {
     const {
-        theme, setTheme, mobile, setMobile, sidebar, setSidebar,
+        mobile, setMobile, sidebar,
     } = useContext(WebsiteContext);
 
     const [width, height] = useWindowSize();

@@ -1,3 +1,4 @@
+import React from 'react';
 import style from './Orion.module.scss';
 import Page from '../components/Page';
 import Gallery from '../components/Gallery';

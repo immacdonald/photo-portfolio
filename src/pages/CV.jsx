@@ -1,3 +1,4 @@
+import React from 'react';
 import style from './CV.module.scss';
 import Page from '../components/Page';
 

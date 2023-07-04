@@ -1,3 +1,4 @@
+import React from 'react';
 import style from './Biography.module.scss';
 import Page from '../components/Page';
 

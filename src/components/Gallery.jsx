@@ -1,3 +1,5 @@
+import React, { useState, useEffect } from 'react';
+
 import PhotoAlbum from 'react-photo-album';
 
 import Lightbox from 'yet-another-react-lightbox';
@@ -11,7 +13,6 @@ import Captions from 'yet-another-react-lightbox/plugins/captions';
 import 'yet-another-react-lightbox/plugins/thumbnails.css';
 import 'yet-another-react-lightbox/plugins/captions.css';
 
-import { useState, useEffect } from 'react';
 import './Gallery.module.scss';
 import useWindowSize from '../hooks/useWindowSize';
 

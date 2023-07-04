@@ -1,4 +1,4 @@
-import React, { useState, createContext } from 'react';
+import React, { useState, createContext, useMemo } from 'react';
 
 export const WebsiteContext = createContext('');
 
@@ -10,11 +10,12 @@ export function WebsiteContextProvider(props) {
     // Controls whether the sidebar is open (true) or closed (false)
     const [sidebar, setSidebar] = useState(true);
 
+    const value = useMemo(() => ({
+        theme, setTheme, mobile, setMobile, sidebar, setSidebar,
+    }), [theme, setTheme, mobile, setMobile, sidebar, setSidebar]);
+
     return (
-        <WebsiteContext.Provider value={{
-            theme, setTheme, mobile, setMobile, sidebar, setSidebar,
-        }}
-        >
+        <WebsiteContext.Provider value={value}>
             {props.children}
         </WebsiteContext.Provider>
     );
