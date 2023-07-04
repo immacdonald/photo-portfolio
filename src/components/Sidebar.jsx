@@ -33,9 +33,9 @@ function Sidebar() {
     const defaultContactText = 'Contact Me';
     const [contact, setContact] = useState(defaultContactText);
     const [contactLink, setContactLink] = useState(null);
-    const assignSocial = (text = null, link = null) => {
-        setContact(text || defaultContactText);
-        setContactLink(link);
+    const assignSocial = (social = null) => {
+        setContact(social ? social.handle : defaultContactText);
+        setContactLink(social ? social.link : null);
     };
 
     const visitSocial = () => {
@@ -65,6 +65,8 @@ function Sidebar() {
         },
     ];
 
+    const toggleTheme = () => (theme === 'light' ? setTheme('dark') : setTheme('light'));
+
     // Sidebar changes style based on if it is in an open or closed state
     const sidebarClasses = classNames(
         style.sidebar,
@@ -74,10 +76,10 @@ function Sidebar() {
     );
 
     return (
-        <div className={sidebarClasses} onMouseEnter={(e) => { hoverSidebar(true); }} onMouseLeave={(e) => { hoverSidebar(false); }}>
+        <div className={sidebarClasses} onMouseEnter={() => { hoverSidebar(true); }} onMouseLeave={() => { hoverSidebar(false); }}>
             <div className={style.sidebarContent}>
-                <div className={style.signature} onClick={(e) => { theme === 'light' ? setTheme('dark') : setTheme('light'); }}>
-                    <img src={signature} />
+                <div className={style.signature} role="presentation" onClick={toggleTheme} onKeyDown={toggleTheme}>
+                    <img src={signature} alt="Kam's Signature" />
                 </div>
                 <div className={style.navigation}>
                     <nav className={style.links}>
@@ -90,11 +92,11 @@ function Sidebar() {
                         <NavLink label="CV" link="/cv" />
                     </nav>
                 </div>
-                <div className={style.socials} onClick={visitSocial} onMouseLeave={(e) => assignSocial()}>
+                <div className={style.socials} role="presentation" onClick={visitSocial} onKeyDown={visitSocial} onMouseLeave={() => assignSocial()}>
                     <div className={style.socialsText}>{contact}</div>
                     <div className={style.socialsLinks}>
                         {socials.map((social) => (
-                            <div className={style.iconButton} key={social.platform} onMouseEnter={(e) => assignSocial(social.handle, social.link)}>
+                            <div className={style.iconButton} key={social.platform} onMouseEnter={() => assignSocial(social)}>
                                 <div className={style.icon}>
                                     {social.logo}
                                 </div>
@@ -103,8 +105,8 @@ function Sidebar() {
                     </div>
                 </div>
             </div>
-            <div className={style.toggleButton} onClick={toggleSidebar}>
-                <img className="logo" src={logo} />
+            <div className={style.toggleButton} role="presentation" onClick={toggleSidebar} onKeyDown={toggleSidebar}>
+                <img className="logo" src={logo} alt="Toggle Button Logo" />
                 <div className={style.visual} />
             </div>
         </div>

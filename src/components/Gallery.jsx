@@ -48,7 +48,7 @@ function Gallery(props) {
     }, []);
 
     // Gallery sizing with screen-size breakpoints based on a 6 column default
-    const [width, height] = useWindowSize();
+    const { width } = useWindowSize();
 
     const photosPerRow = () => {
         if (width <= 480) {
@@ -75,7 +75,7 @@ function Gallery(props) {
                 layout="rows"
                 rowConstraints={{ minPhotos: photosPerRow() - layoutVariance, maxPhotos: photosPerRow() + layoutVariance }}
                 targetRowHeight={targetRowHeight}
-                onClick={({ index }) => setIndex(index)}
+                onClick={({ index: clickedIndex }) => setIndex(clickedIndex)}
             />
             <Lightbox
                 slides={loadedPhotos}

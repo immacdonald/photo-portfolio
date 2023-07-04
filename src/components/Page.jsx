@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import classNames from 'classnames';
 import style from './Page.module.scss';
 import { WebsiteContext } from '../contexts/WebsiteContext';

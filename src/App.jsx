@@ -26,7 +26,7 @@ function AppContent() {
         mobile, setMobile, sidebar,
     } = useContext(WebsiteContext);
 
-    const [width, height] = useWindowSize();
+    const { width } = useWindowSize();
     const mobileThreshold = 768;
 
     useEffect(() => {

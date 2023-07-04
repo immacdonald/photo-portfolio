@@ -33,7 +33,7 @@ function Home() {
             <div className={style.background} style={{ backgroundImage: `url(${backgroundImages[currentIndex]})` }}>
                 <Page forceTheme="dark" altFooter>
                     <div className={style.signatureWrapper}>
-                        <img src={glowingSignature} className={style.glowingSignature} draggable="false" />
+                        <img src={glowingSignature} className={style.glowingSignature} draggable="false" alt="Kam's Signature, Glowing" />
                     </div>
                 </Page>
             </div>

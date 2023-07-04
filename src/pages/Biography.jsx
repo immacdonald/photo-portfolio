@@ -20,12 +20,13 @@ function Biography() {
                 <div>
                     As someone who has been diagnosed with a plethora of mental health disorders, she seeks to explore how these diagnoses
                     impact her everyday life, and capture the idea of emotions through her photographs. Her main intention is not to share
-                    her own emotions with her audiences, but instead to evoke something (anything, really) within them. She aims to convey
-                    something of power, but hopes that the power is found within her audience rather than from her own statements about the work.
+                    her own emotions with her audiences, but instead to evoke something (anything, really) within them.
+                    She aims to convey something of power, but hopes that the power is found within
+                    her audience rather than from her own statements about the work.
                 </div>
             </div>
             <div className={style.photoContainer}>
-                <img src={selfPortrait} className={style.photo} />
+                <img src={selfPortrait} className={style.photo} alt="Kam with a flower" />
             </div>
         </Page>
     );

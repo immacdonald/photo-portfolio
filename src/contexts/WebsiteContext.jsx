@@ -3,6 +3,7 @@ import React, { useState, createContext, useMemo } from 'react';
 export const WebsiteContext = createContext('');
 
 export function WebsiteContextProvider(props) {
+    const { children } = props;
     // Stores the site-wide settings for various aspects
     // Theme can be "light" or "dark"
     const [theme, setTheme] = useState('light');
@@ -16,7 +17,7 @@ export function WebsiteContextProvider(props) {
 
     return (
         <WebsiteContext.Provider value={value}>
-            {props.children}
+            {children}
         </WebsiteContext.Provider>
     );
 }
