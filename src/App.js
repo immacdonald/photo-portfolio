@@ -5,7 +5,7 @@ import Home from "./pages/Home";
 import Biography from "./pages/Biography";
 import CV from "./pages/CV";
 import Orion from "./pages/Orion";
-import Tub from "./pages/Orion";
+import Tub from "./pages/Tub";
 import Sidebar from "./components/Sidebar";
 
 // Site-wide base styling
@@ -48,7 +48,7 @@ function AppContent() {
           <Route path="biography" element={<Biography />} />
           <Route path="works">
             <Route path="orion" element={<Orion />} />
-            <Route path="tub" element={<Orion />} />
+            <Route path="tub" element={<Tub />} />
           </Route>
           <Route path="cv" element={<CV />} />
         </Routes>

@@ -39,7 +39,7 @@ const Orion = () => {
     return (
         <Page>
             <h1>Orion, 2023</h1>
-            <Gallery photos={photos} path="works/orion" description="Silver Gelatin Print"/>
+            <Gallery photos={photos} path="works/orion" description="Silver Gelatin Print" exactLayout={true}/>
             <br/>
             <h3>About the Series</h3>
             <div className={style.bodyText}>
