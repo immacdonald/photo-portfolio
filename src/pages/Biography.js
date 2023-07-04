@@ -2,6 +2,8 @@ import style from "./Biography.module.scss";
 import Page from "../components/Page";
 
 const Biography = () => {
+    const selfPortrait = require("../static/images/kam.jpg");
+
     return (
         <Page>
             <h1>Biography</h1>
@@ -20,6 +22,9 @@ const Biography = () => {
                     her own emotions with her audiences, but instead to evoke something (anything, really) within them. She aims to convey 
                     something of power, but hopes that the power is found within her audience rather than from her own statements about the work. 
                 </div>
+            </div>
+            <div className={style.photoContainer}>
+                <img src={selfPortrait} className={style.photo}/>
             </div>
         </Page>
     );
