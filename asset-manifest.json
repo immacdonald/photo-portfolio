@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/photo-portfolio/static/css/main.120cd4f9.css",
-    "main.js": "/photo-portfolio/static/js/main.5fe6c2d8.js",
+    "main.css": "/photo-portfolio/static/css/main.ad19496b.css",
+    "main.js": "/photo-portfolio/static/js/main.8a0d3658.js",
     "static/js/8346.61e376c0.chunk.js": "/photo-portfolio/static/js/8346.61e376c0.chunk.js",
     "static/js/9737.1089a743.chunk.js": "/photo-portfolio/static/js/9737.1089a743.chunk.js",
     "static/js/8503.e3b1f06a.chunk.js": "/photo-portfolio/static/js/8503.e3b1f06a.chunk.js",
@@ -135,11 +135,11 @@
     "static/media/linkedin.svg": "/photo-portfolio/static/media/linkedin.cf4e807ef73743af646ab87b373f53a9.svg",
     "static/media/mail.svg": "/photo-portfolio/static/media/mail.32acd59b22a9d8cefd6fb67a7e7a6f45.svg",
     "index.html": "/photo-portfolio/index.html",
-    "main.120cd4f9.css.map": "/photo-portfolio/static/css/main.120cd4f9.css.map",
-    "main.5fe6c2d8.js.map": "/photo-portfolio/static/js/main.5fe6c2d8.js.map"
+    "main.ad19496b.css.map": "/photo-portfolio/static/css/main.ad19496b.css.map",
+    "main.8a0d3658.js.map": "/photo-portfolio/static/js/main.8a0d3658.js.map"
   },
   "entrypoints": [
-    "static/css/main.120cd4f9.css",
-    "static/js/main.5fe6c2d8.js"
+    "static/css/main.ad19496b.css",
+    "static/js/main.8a0d3658.js"
   ]
 }
