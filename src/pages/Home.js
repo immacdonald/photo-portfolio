@@ -31,7 +31,7 @@ const Home = () => {
     return (
         <div className={style.defaultBackground}>
             <div className={style.background} style={{ backgroundImage: `url(${backgroundImages[currentIndex]})` }}>
-                <Page forceTheme="dark">
+                <Page forceTheme="dark" altFooter={true}>
                     <div className={style.signatureWrapper}>
                         <img src={glowingSignature} className={style.glowingSignature} draggable="false"/>
                     </div>

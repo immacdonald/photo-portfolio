@@ -5,7 +5,7 @@ import Footer from "./Footer";
 import classNames from "classnames";
 
 const Page = (props) => {
-    const { children, forceTheme = false} = props;
+    const { children, forceTheme = false, altFooter = false} = props;
 
     const { theme, sidebar, mobile } = useContext(WebsiteContext);
 
@@ -34,7 +34,7 @@ const Page = (props) => {
                     <main className={style.mainContent}>
                         {children}
                     </main>
-                    <Footer/>
+                    <Footer alt={altFooter}/>
                 </div>
             </div>
         </div>

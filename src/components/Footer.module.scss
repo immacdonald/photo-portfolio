@@ -7,6 +7,16 @@
     width: 100%;
 	height: s.$footerHeight;
 
+    &.alt {
+        border: none;
+        
+        > div {
+            background-color: color-mix(in srgb, var(--c-background-primary) 50%, transparent);
+            padding: 0 8px;
+            border-radius: 8px;
+        }
+    }
+
 	.footerContent {
 		@include s.bodyText;
 		margin-top: 6px;
