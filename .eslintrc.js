@@ -1,5 +1,4 @@
 module.exports = {
-  root: false,
   env: {
     browser: true,
     es2021: true,
@@ -15,6 +14,9 @@ module.exports = {
       ],
       parserOptions: {
         sourceType: 'script',
+        ecmaFeatures: {
+          jsx: true
+        },
       },
     },
   ],
@@ -23,9 +25,12 @@ module.exports = {
     sourceType: 'module',
   },
   rules: {
-    "max-len": ["error", 120],
+    "max-len": ["error", 152],
     "indent": ["error", 4],
     "react/jsx-indent": ["error", 4],
-    "react/jsx-indent-props": ["error", 4]
+    "react/jsx-indent-props": ["error", 4],
+    "react/prop-types": "off",
+    "global-require": 0,
+    "import/no-unresolved": 0,
   },
 };
