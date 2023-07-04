@@ -1,14 +1,17 @@
-import style from "./CV.module.scss";
-import Page from "../components/Page";
+import style from './CV.module.scss';
+import Page from '../components/Page';
 
-const CV = () => {
+function CV() {
     return (
         <Page>
             <h1>Curriculum Vitae</h1>
             <div className={style.bodyText}>
                 <div>
                     <p><b>Education</b></p>
-                    <p><i>College of William & Mary</i>, 2023</p>
+                    <p>
+                        <i>College of William & Mary</i>
+                        , 2023
+                    </p>
                     <p>Bachelor of Arts in History</p>
                     <p>Minor in Studio Arts and Art History</p>
                 </div>
@@ -19,6 +22,6 @@ const CV = () => {
             </div>
         </Page>
     );
-};
-  
+}
+
 export default CV;

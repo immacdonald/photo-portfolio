@@ -1,14 +1,14 @@
-import style from "./Footer.module.scss";
-import classNames from "classnames";
+import classNames from 'classnames';
+import style from './Footer.module.scss';
 
-const Footer = (props) => {
+function Footer(props) {
     const { alt = false } = props;
 
     const footerClases = classNames(
-        style.footer, 
+        style.footer,
         {
-            [style.alt]: alt
-        }
+            [style.alt]: alt,
+        },
     );
 
     return (

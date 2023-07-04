@@ -1,16 +1,16 @@
-import style from "./Page.module.scss";
-import React, { useContext, useEffect } from "react";
-import { WebsiteContext } from "../contexts/WebsiteContext";
-import Footer from "./Footer";
-import classNames from "classnames";
+import React, { useContext, useEffect } from 'react';
+import classNames from 'classnames';
+import style from './Page.module.scss';
+import { WebsiteContext } from '../contexts/WebsiteContext';
+import Footer from './Footer';
 
-const Page = (props) => {
-    const { children, forceTheme = false, altFooter = false} = props;
+function Page(props) {
+    const { children, forceTheme = false, altFooter = false } = props;
 
     const { theme, sidebar, mobile } = useContext(WebsiteContext);
 
     // A specific site theme can be forced for particular pages, overriding user's preferences
-    if(forceTheme) {
+    if (forceTheme) {
         document.documentElement.setAttribute('data-mode', forceTheme);
     } else {
         document.documentElement.setAttribute('data-mode', theme);
@@ -18,13 +18,13 @@ const Page = (props) => {
 
     // Style the main page body based on if the sidebar is open and if the device is mobile
     const mainClasses = classNames(
-        style.main, 
+        style.main,
         {
-            [style.full]: !sidebar
+            [style.full]: !sidebar,
         },
         {
-            [style.mobile]: mobile
-        }
+            [style.mobile]: mobile,
+        },
     );
 
     return (
@@ -34,11 +34,11 @@ const Page = (props) => {
                     <main className={style.mainContent}>
                         {children}
                     </main>
-                    <Footer alt={altFooter}/>
+                    <Footer alt={altFooter} />
                 </div>
             </div>
         </div>
     );
-};
-  
+}
+
 export default Page;
