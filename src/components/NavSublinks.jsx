@@ -35,7 +35,7 @@ function NavSublinks(props) {
 
     return (
         <div className={style.sublinks}>
-            <a role="button" onClick={toggleSublinks} className={getClassName()}>{label}</a>
+            <button type="button" onClick={toggleSublinks} className={getClassName()}>{label}</button>
             <div ref={contentRef}>
                 {children}
             </div>
