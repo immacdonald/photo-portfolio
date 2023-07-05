@@ -40,7 +40,7 @@ function Orion() {
     return (
         <Page>
             <h1>Orion, 2023</h1>
-            <Gallery photos={photos} path="works/orion" description="Silver Gelatin Print" exactLayout />
+            <Gallery photos={photos} path="works/orion" description="35mm Film, Silver Gelatin Print" exactLayout />
             <br />
             <h3>About the Series</h3>
             <div className={style.bodyText}>
