@@ -12,6 +12,9 @@ function Home() {
         require('../static/images/background/background_05.jpg'),
         require('../static/images/background/background_06.jpg'),
         require('../static/images/background/background_07.jpg'),
+        require('../static/images/background/background_08.jpg'),
+        require('../static/images/background/background_09.jpg'),
+        require('../static/images/background/background_10.jpg'),
     ];
 
     useEffect(() => {
