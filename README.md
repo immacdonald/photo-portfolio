@@ -2,6 +2,8 @@
 
 Made for the photographer Kam Lin, this is a portfolio website showcasing a variety of her works. It includes interactive photo galleries, light and dark modes, and is fully responsive on mobile devices.
 
+![Website Home Page](docs/home_page.png)
+
 ## Development
 
 Developed using React, the website is built to be lightweight and dynamic, offering a pleasant experience for the user while being easily modifiable by the developer for future additions. A global state is used throughout all pages to keep track of the current theme, status of the sidebar, and whether the device is considered to be mobile, all affecting various aspects of the user experience.
