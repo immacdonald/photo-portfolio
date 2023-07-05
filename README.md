@@ -1,70 +1,21 @@
-# Getting Started with Create React App
+# A Minimalist Photography Portfolio Site - [See It Here!](kam-lin.com)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Made for the photographer Kam Lin, this is a portfolio website showcasing a variety of her works. It includes interactive photo galleries, light and dark modes, and is fully responsive on mobile devices.
 
-## Available Scripts
+![Website Home Page](docs/home_page.png)
 
-In the project directory, you can run:
+## Development
 
-### `npm start`
+Developed using React, the website is built to be lightweight and dynamic, offering a pleasant experience for the user while being easily modifiable by the developer for future additions. A global state is used throughout all pages to keep track of the current theme, status of the sidebar, and whether the device is considered to be mobile, all affecting various aspects of the user experience.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Styling
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Styling is done using Dart SASS to make use of the latest features implemented in SASS. These are seperated into CSS modules to be imported per-component to allow for a more modular design framework. Key colors and style variables are stored in the base style index to be used throughout the codebase to reduce repetition and ensure stylistic continuity between all elements and pages. 
 
-### `npm test`
+### Versioning
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+`bump2version` is used  to manage the version of the site and its package details.
 
 ### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+GitHub Pages is used for deploying the React app onto [kam-lin.com](kam-lin.com) through the use of the custom domain DNS feature.
