@@ -1,10 +1,9 @@
 import React from 'react';
 import style from './Biography.module.scss';
 import Page from '../components/Page';
+import selfPortrait from '../static/images/kam.jpg';
 
 function Biography() {
-    const selfPortrait = require('../static/images/kam.jpg');
-
     return (
         <Page>
             <h1>Biography</h1>

@@ -25,20 +25,41 @@ function Gallery(props) {
     const [loadedPhotos, setPhotos] = useState([]);
 
     // Loading the photos async to be used by photo-album and lightbox
+    const loadImageDimensions = (photo) => {
+        return new Promise((resolve) => {
+            const image = new Image();
+            image.src = photo.file;
+    
+            image.onload = () => {
+                resolve({
+                    src: image.src,
+                    width: image.width,
+                    height: image.height,
+                });
+            };
+    
+            image.onerror = () => {
+                resolve({
+                    src: image.src,
+                    width: 0,
+                    height: 0,
+                });
+            };
+        });
+    };
+    
     const loadImages = async () => {
         const imagePromises = photos.map(async (photo, i) => {
-            const imageModule = await import(`../static/images/${path}/${photo.file}.jpg`);
-            const image = new Image(); // Create a new image object
-            image.src = imageModule.default; // Set the source of the image
-            await image.decode(); // Wait for the image to load
+            const { src, width, height } = await loadImageDimensions(photo);
             const photoDescription = description ? `${photos[i].title} \n ${description}` : photos[i].title;
             return {
-                src: image.src,
-                width: image.width,
-                height: image.height,
+                src,
+                width,
+                height,
                 description: photoDescription,
             };
         });
+    
         const images = await Promise.all(imagePromises);
         setPhotos(images);
     };

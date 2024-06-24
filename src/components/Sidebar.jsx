@@ -4,17 +4,12 @@ import style from './Sidebar.module.scss';
 import NavLink from './NavLink';
 import NavSublinks from './NavSublinks';
 import { WebsiteContext } from '../contexts/WebsiteContext';
+//import { Bulb, LinkedIn, Instagram, Mail } from '../assets/index';
 
-import { ReactComponent as Instagram } from '../static/images/icons/instagram.svg';
-import { ReactComponent as LinkedIn } from '../static/images/icons/linkedin.svg';
-import { ReactComponent as Email } from '../static/images/icons/mail.svg';
-import { ReactComponent as Bulb } from '../static/images/icons/bulb.svg';
+import signature from '../static/images/icons/signature.png';
+import logo from '../static/images/icons/logo.png'
 
 function Sidebar() {
-    // Required graphics for the sidebar
-    const signature = require('../static/images/icons/signature.png');
-    const logo = require('../static/images/icons/logo.png');
-
     const {
         sidebar, setSidebar, theme, setTheme, mobile,
     } = useContext(WebsiteContext);
@@ -48,19 +43,19 @@ function Sidebar() {
     const socials = [
         {
             platform: 'Instagram',
-            logo: <Instagram />,
+            logo: null, //<Instagram />,
             handle: '@kamlinphotography',
             link: 'https://instagram.com/kamlinphotography',
         },
         {
             platform: 'LinkedIn',
-            logo: <LinkedIn />,
+            logo: null, //<LinkedIn />,
             handle: 'Kam Lin on LinkedIn',
             link: 'https://www.linkedin.com/in/kam-lin-567670186/',
         },
         {
             platform: 'Email',
-            logo: <Email />,
+            logo: null, //<Email />,
             handle: 'kammiea.lin@gmail.com',
             link: 'mailto:kammiealin@gmail.com',
         },
@@ -114,7 +109,7 @@ function Sidebar() {
                 <div className={style.theme} role="presentation" onClick={toggleTheme} onKeyDown={toggleTheme}>
                     <div className={style.themeInner}>
                         <div className={style.themeToggle}>
-                            <Bulb />
+                            {/*<Bulb />*/}
                         </div>
                         <div className={style.themeLabel}>
                             {`Toggle ${oppositeTheme(theme)} Theme`}
