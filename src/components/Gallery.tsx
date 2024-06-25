@@ -1,18 +1,14 @@
-import React, { useState, useEffect } from 'react';
-
+import React, { useEffect, useState } from 'react';
 import PhotoAlbum from 'react-photo-album';
-
 import Lightbox from 'yet-another-react-lightbox';
 import 'yet-another-react-lightbox/styles.css';
-
+import Captions from 'yet-another-react-lightbox/plugins/captions';
 import Fullscreen from 'yet-another-react-lightbox/plugins/fullscreen';
 import Slideshow from 'yet-another-react-lightbox/plugins/slideshow';
 import Thumbnails from 'yet-another-react-lightbox/plugins/thumbnails';
 import Zoom from 'yet-another-react-lightbox/plugins/zoom';
-import Captions from 'yet-another-react-lightbox/plugins/captions';
 import 'yet-another-react-lightbox/plugins/thumbnails.css';
 import 'yet-another-react-lightbox/plugins/captions.css';
-
 import './Gallery.module.scss';
 import { useWindowSize } from 'phantom-library';
 
@@ -43,27 +39,27 @@ const Gallery: React.FC<GalleryProps> = ({ photos, description = '', exactLayout
         return new Promise((resolve) => {
             const image = new Image();
             image.src = photo.file;
-    
+
             image.onload = () => {
                 resolve({
                     src: image.src,
                     width: image.width,
                     height: image.height,
-                    description: photo.title,
+                    description: photo.title
                 });
             };
-    
+
             image.onerror = () => {
                 resolve({
                     src: image.src,
                     width: 0,
                     height: 0,
-                    description: photo.title,
+                    description: photo.title
                 });
             };
         });
     };
-    
+
     const loadImages = async () => {
         const imagePromises = photos.map(async (photo) => {
             const { src, width, height } = await loadImageDimensions(photo);
@@ -72,10 +68,10 @@ const Gallery: React.FC<GalleryProps> = ({ photos, description = '', exactLayout
                 src,
                 width,
                 height,
-                description: photoDescription,
+                description: photoDescription
             };
         });
-    
+
         const images = await Promise.all(imagePromises);
         setPhotos(images);
     };

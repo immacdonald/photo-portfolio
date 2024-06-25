@@ -1,12 +1,12 @@
-[class*="yarl__thumbnails_thumbnail"] { 
+[class*='yarl__thumbnails_thumbnail'] {
     background-color: white;
 }
 
-[class*="yarl__slide_captions_container"] {
+[class*='yarl__slide_captions_container'] {
     background-color: black;
 }
 
-[class*="react-photo-album--photo"] {
+[class*='react-photo-album--photo'] {
     transition: filter ease 0.5s;
 
     &:hover {

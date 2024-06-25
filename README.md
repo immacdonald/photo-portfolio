@@ -10,11 +10,11 @@ Developed using React, the website is built to be lightweight and dynamic, offer
 
 ### Styling
 
-Styling is done using Dart SASS to make use of the latest features implemented in SASS. These are seperated into CSS modules to be imported per-component to allow for a more modular design framework. Key colors and style variables are stored in the base style index to be used throughout the codebase to reduce repetition and ensure stylistic continuity between all elements and pages. 
+Styling is done using Dart SASS to make use of the latest features implemented in SASS. These are seperated into CSS modules to be imported per-component to allow for a more modular design framework. Key colors and style variables are stored in the base style index to be used throughout the codebase to reduce repetition and ensure stylistic continuity between all elements and pages.
 
 ### Versioning
 
-`bump2version` is used  to manage the version of the site and its package details.
+`bump2version` is used to manage the version of the site and its package details.
 
 ### Deployment
 

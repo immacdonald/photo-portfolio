@@ -1,7 +1,5 @@
-import { useState, useEffect } from 'react';
-import style from './Home.module.scss';
+import { useEffect, useState } from 'react';
 import { Page } from '../components/Page';
-import glowingSignature from '../static/images/icons/signature-glow.png';
 import background01 from '../static/images/background/background_01.jpg';
 import background02 from '../static/images/background/background_02.jpg';
 import background03 from '../static/images/background/background_03.jpg';
@@ -12,21 +10,12 @@ import background07 from '../static/images/background/background_07.jpg';
 import background08 from '../static/images/background/background_08.jpg';
 import background09 from '../static/images/background/background_09.jpg';
 import background10 from '../static/images/background/background_10.jpg';
+import glowingSignature from '../static/images/icons/signature-glow.png';
+import style from './Home.module.scss';
 
 function Home() {
     const [currentIndex, setCurrentIndex] = useState(0);
-    const backgroundImages = [
-        background01,
-        background02,
-        background03,
-        background04,
-        background05,
-        background06,
-        background07,
-        background08,
-        background09,
-        background10,
-    ];
+    const backgroundImages = [background01, background02, background03, background04, background05, background06, background07, background08, background09, background10];
 
     useEffect(() => {
         const timer = setInterval(() => {

@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, ReactNode } from 'react';
+import React, { ReactNode, useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import style from './NavSublinks.module.scss';
 
@@ -41,9 +41,7 @@ const NavSublinks: React.FC<NavSublinksProps> = ({ label, children, baseLink, st
             <button type="button" onClick={toggleSublinks} className={getClassName()}>
                 {label}
             </button>
-            <div ref={contentRef}>
-                {children}
-            </div>
+            <div ref={contentRef}>{children}</div>
         </div>
     );
 };

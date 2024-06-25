@@ -1,44 +1,45 @@
-:root, ::selection {
-	//--font-body: "Times New Roman", serif;
-	--font-body: 'Bebas Neue', cursive;
-	--font-header: 'Bebas Neue', cursive;
-	--color-selection: var(--c-accent-secondary);
-	--color-surface-page: var(--grey-1);
+:root,
+::selection {
+    // --font-body: "Times New Roman", serif;
+    --font-body: 'Bebas Neue', cursive;
+    --font-header: 'Bebas Neue', cursive;
+    --color-selection: var(--c-accent-secondary);
+    --color-surface-page: var(--grey-1);
 }
 
-:root[data-mode="light"]  {
-	--c-text-primary: #333;
-	--c-text-action: #636363;
-	--c-accent-primary: rgb(88, 88, 88);
-	--c-accent-secondary: rgb(178, 178, 178);
-	--c-accent-text: #ffffff;
-	--c-border-primary: #eee;
-	--c-background-primary: #F5F5F5;
-	--c-background-secondary: #fff;
-	--c-disabled-color: #cfd1d6;
-	--v-invert: 0;
+:root[data-mode='light'] {
+    --c-text-primary: #333;
+    --c-text-action: #636363;
+    --c-accent-primary: rgb(88 88 88);
+    --c-accent-secondary: rgb(178 178 178);
+    --c-accent-text: #fff;
+    --c-border-primary: #eee;
+    --c-background-primary: #f5f5f5;
+    --c-background-secondary: #fff;
+    --c-disabled-color: #cfd1d6;
+    --v-invert: 0;
 }
 
-:root[data-mode="dark"] {
-	--c-text-primary: #dddddd;
-	--c-text-action: #e7e7e7;
-	--c-accent-primary: rgb(175, 175, 175);
-	--c-accent-secondary: rgb(148, 148, 148);
-	--c-accent-text: #fff;
-	--c-border-primary: #0d0b07;
-	--c-background-primary: #1c1c1c;
-	--c-background-secondary: #000;
-	--c-disabled-color: #302e29;
-	--v-invert: 1;
+:root[data-mode='dark'] {
+    --c-text-primary: #ddd;
+    --c-text-action: #e7e7e7;
+    --c-accent-primary: rgb(175 175 175);
+    --c-accent-secondary: rgb(148 148 148);
+    --c-accent-text: #fff;
+    --c-border-primary: #0d0b07;
+    --c-background-primary: #1c1c1c;
+    --c-background-secondary: #000;
+    --c-disabled-color: #302e29;
+    --v-invert: 1;
 }
 
 a {
-	text-decoration: none !important;
+    text-decoration: none !important;
 }
 
 p {
-	font-family: "Times New Roman", serif;
-	font-weight: 300;
-	font-style: normal;
-	line-height: 1.9;
+    font-family: 'Times New Roman', serif;
+    font-weight: 300;
+    font-style: normal;
+    line-height: 1.9;
 }

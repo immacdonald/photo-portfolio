@@ -1,15 +1,13 @@
 import { useEffect } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import { Sidebar } from './components/Sidebar';
 import './App.module.scss';
 import { PhantomApp, useWindowSize } from 'phantom-library';
 import { useWebsiteContext } from './contexts/useWebsiteContext';
-import { Home, Biography, Orion, Tub, CV } from './pages';
+import { Biography, CV, Home, Orion, Tub } from './pages';
 
 const App = () => {
-    const {
-        mobile, setMobile, sidebar,
-    } = useWebsiteContext();
+    const { mobile, setMobile, sidebar } = useWebsiteContext();
 
     const { width } = useWindowSize();
     const mobileThreshold = 768;
@@ -21,11 +19,11 @@ const App = () => {
     }, [width, setMobile]);
 
     useEffect(() => {
-        document.body.style.overflow = (mobile && sidebar) ? 'hidden' : '';
+        document.body.style.overflow = mobile && sidebar ? 'hidden' : '';
     }, [mobile, sidebar]);
 
     return (
-        <PhantomApp anchors={false} cssProperties={{display: "block"}}>
+        <PhantomApp anchors={false} cssProperties={{ display: 'block' }}>
             <Sidebar />
             <Routes>
                 <Route index element={<Home />} />
@@ -38,6 +36,6 @@ const App = () => {
             </Routes>
         </PhantomApp>
     );
-}
+};
 
-export { App }
+export { App };

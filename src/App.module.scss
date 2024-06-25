@@ -1,11 +1,11 @@
-@use "./styles";
+@use './styles';
 
 html {
     height: 100%;
-	display: block;
+    display: block;
     box-sizing: border-box;
 
-	/*&::-webkit-scrollbar {
+    /* &::-webkit-scrollbar {
 	  width: 10px;
 	}
   
@@ -17,21 +17,26 @@ html {
 	  background-color: var(--c-border-primary);
 	  border-radius: 10px;
 	  border: 3px solid lightgrey;
-	}*/
+	} */
 }
 
 body {
     height: 100%;
-	line-height: 1.5;
-	background-color: var(--c-background-primary);
-	color: var(--c-text-primary);
-	overflow-x: hidden;
+    line-height: 1.5;
+    background-color: var(--c-background-primary);
+    color: var(--c-text-primary);
+    overflow-x: hidden;
 }
 
-h1, h2, h3, h4, h5, h6 {
-    letter-spacing: .1rem;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    letter-spacing: 0.1rem;
 }
 
 a {
-	text-decoration: none;
+    text-decoration: none;
 }

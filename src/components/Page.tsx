@@ -1,8 +1,8 @@
 import React, { ReactNode } from 'react';
 import classNames from 'classnames';
-import style from './Page.module.scss';
-import { Footer } from './Footer';
 import { useWebsiteContext } from 'src/contexts/useWebsiteContext';
+import { Footer } from './Footer';
+import style from './Page.module.scss';
 
 interface PageProps {
     children: ReactNode;
@@ -24,10 +24,10 @@ const Page: React.FC<PageProps> = ({ children, forceTheme = false, altFooter = f
     const mainClasses = classNames(
         style.main,
         {
-            [style.full]: !sidebar,
+            [style.full]: !sidebar
         },
         {
-            [style.mobile]: mobile,
+            [style.mobile]: mobile
         }
     );
 
@@ -35,9 +35,7 @@ const Page: React.FC<PageProps> = ({ children, forceTheme = false, altFooter = f
         <div className={style.mainContainer}>
             <div className={mainClasses}>
                 <div className={style.responsiveWrapper}>
-                    <main className={style.mainContent}>
-                        {children}
-                    </main>
+                    <main className={style.mainContent}>{children}</main>
                     <Footer alt={altFooter} />
                 </div>
             </div>

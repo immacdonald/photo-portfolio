@@ -1,12 +1,4 @@
-@use "../styles" as s;
-
-.bodyText {
-    @include s.bodyText;
-
-    div {
-        margin-bottom: 1em;
-    }
-}
+@use '../styles' as s;
 
 .defaultBackground {
     background-color: black;
@@ -41,6 +33,6 @@
     width: 90%;
 }
 
-[class*="footer"] {
+[class*='footer'] {
     border-top: none;
 }

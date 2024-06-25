@@ -1,15 +1,13 @@
 import React, { ComponentType, useState } from 'react';
 import classNames from 'classnames';
-import style from './Sidebar.module.scss';
+import { Button, IconProps, MoonFilled, Row, SunFilled } from 'phantom-library';
+import { Instagram, LinkedIn, Mail } from 'src/assets';
+import { useWebsiteContext } from 'src/contexts/useWebsiteContext';
+import logo from '../static/images/icons/logo.png';
+import signature from '../static/images/icons/signature.png';
 import { NavLink } from './NavLink';
 import { NavSublinks } from './NavSublinks';
-// import { Bulb, LinkedIn, Instagram, Mail } from '../assets/index';
-
-import signature from '../static/images/icons/signature.png';
-import logo from '../static/images/icons/logo.png';
-import { useWebsiteContext } from 'src/contexts/useWebsiteContext';
-import { Bulb, Instagram, LinkedIn, Mail } from 'src/assets';
-import { Button, IconProps, Row, SunFilled, MoonFilled } from 'phantom-library';
+import style from './Sidebar.module.scss';
 
 interface Social {
     platform: string;
@@ -19,9 +17,7 @@ interface Social {
 }
 
 const Sidebar: React.FC = () => {
-    const {
-        sidebar, setSidebar, theme, setTheme, mobile,
-    } = useWebsiteContext();
+    const { sidebar, setSidebar, theme, setTheme, mobile } = useWebsiteContext();
 
     const toggleSidebar = () => {
         setSidebar(!sidebar);
@@ -35,16 +31,9 @@ const Sidebar: React.FC = () => {
 
     const defaultContactText = 'Contact Me';
     const [contact, setContact] = useState<string>(defaultContactText);
-    const [contactLink, setContactLink] = useState<string | null>(null);
+
     const assignSocial = (social: Social | null = null) => {
         setContact(social ? social.handle : defaultContactText);
-        setContactLink(social ? social.link : null);
-    };
-
-    const visitSocial = () => {
-        if (contactLink != null) {
-            window.open(contactLink, '_blank', 'noopener,noreferrer');
-        }
     };
 
     const socials: Social[] = [
@@ -52,33 +41,39 @@ const Sidebar: React.FC = () => {
             platform: 'Instagram',
             logo: Instagram,
             handle: '@kamlinphotography',
-            link: 'https://instagram.com/kamlinphotography',
+            link: 'https://instagram.com/kamlinphotography'
         },
         {
             platform: 'LinkedIn',
             logo: LinkedIn,
             handle: 'Kam Lin on LinkedIn',
-            link: 'https://www.linkedin.com/in/kam-lin-567670186/',
+            link: 'https://www.linkedin.com/in/kam-lin-567670186/'
         },
         {
             platform: 'Email',
             logo: Mail,
             handle: 'kammiea.lin@gmail.com',
-            link: 'mailto:kammiealin@gmail.com',
-        },
+            link: 'mailto:kammiealin@gmail.com'
+        }
     ];
 
     const toggleTheme = () => (theme === 'light' ? setTheme('dark') : setTheme('light'));
 
-    const sidebarClasses = classNames(
-        style.sidebar,
-        {
-            [style.closed]: !sidebar,
-        }
-    );
+    const sidebarClasses = classNames(style.sidebar, {
+        [style.closed]: !sidebar
+    });
 
     return (
-        <div className={sidebarClasses} onMouseEnter={() => { hoverSidebar(true); }} onMouseLeave={() => { hoverSidebar(false); }}>
+        <div
+            className={sidebarClasses}
+            role="presentation"
+            onMouseEnter={() => {
+                hoverSidebar(true);
+            }}
+            onMouseLeave={() => {
+                hoverSidebar(false);
+            }}
+        >
             <div className={style.sidebarContent}>
                 <div className={style.signature}>
                     <img src={signature} alt="Kam's Signature" />
@@ -98,13 +93,10 @@ const Sidebar: React.FC = () => {
                     <div className={style.socialsText}>{contact}</div>
                     <Row gap="4px">
                         {socials.map((social) => (
-                            <Button key={social.platform} onHover={() => assignSocial(social)} Icon={social.logo} link={social.link} rounded/>
+                            <Button key={social.platform} onHover={() => assignSocial(social)} Icon={social.logo} link={social.link} rounded />
                         ))}
                         <Button Icon={theme == 'light' ? SunFilled : MoonFilled} onClick={toggleTheme} rounded />
                     </Row>
-                </div>
-                <div className={style.theme} role="presentation" >
-                    
                 </div>
             </div>
             <div className={style.toggleButton} role="presentation" onClick={toggleSidebar} onKeyDown={toggleSidebar}>

@@ -1,4 +1,4 @@
-import React, { useState, createContext, useMemo, ReactNode } from 'react';
+import React, { createContext, ReactNode, useMemo, useState } from 'react';
 
 interface WebsiteContextProps {
     theme: string;
@@ -27,16 +27,12 @@ const WebsiteContextProvider = ({ children }: WebsiteContextProviderProps): JSX.
             mobile,
             setMobile,
             sidebar,
-            setSidebar,
+            setSidebar
         }),
         [theme, mobile, sidebar]
     );
 
-    return (
-        <WebsiteContext.Provider value={value}>
-            {children}
-        </WebsiteContext.Provider>
-    );
-}
+    return <WebsiteContext.Provider value={value}>{children}</WebsiteContext.Provider>;
+};
 
-export { WebsiteContext, WebsiteContextProvider }
+export { WebsiteContext, WebsiteContextProvider };

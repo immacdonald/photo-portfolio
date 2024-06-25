@@ -6,13 +6,10 @@ interface FooterProps {
     alt: boolean;
 }
 
-const Footer: React.FC<FooterProps> = ( { alt }) => {
-    const footerClases = classNames(
-        style.footer,
-        {
-            [style.alt]: alt,
-        },
-    );
+const Footer: React.FC<FooterProps> = ({ alt }) => {
+    const footerClases = classNames(style.footer, {
+        [style.alt]: alt
+    });
 
     return (
         <footer>
@@ -23,6 +20,6 @@ const Footer: React.FC<FooterProps> = ( { alt }) => {
             </div>
         </footer>
     );
-}
+};
 
 export { Footer };
