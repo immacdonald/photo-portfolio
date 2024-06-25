@@ -16,7 +16,7 @@ $borderWidth: 1px;
 	padding: 0 s.$sidebarPadding;
 
 	&.closed {
-		transform: translateX(calc(-#{s.$sidebarWidth} + #{s.$sidebarPoke}));
+		transform: translateX(-180px);
 	}
 }
 
@@ -123,7 +123,6 @@ $borderWidth: 1px;
 	width: 100%;
 	padding-top: 2.5vh;
 	padding-bottom: 1vh;
-	cursor: pointer;
 }
 
 .socialsText {
@@ -149,8 +148,11 @@ $borderWidth: 1px;
 
 .theme {
 	width: 100%;
-	border-top: 1px solid var(--c-border-primary);
-	padding-top: 8px;
+	border-top: var(--border-light);
+	padding-block: 8px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .themeInner {

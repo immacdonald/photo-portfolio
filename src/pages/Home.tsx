@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import style from './Home.module.scss';
-import Page from '../components/Page';
+import { Page } from '../components/Page';
 import glowingSignature from '../static/images/icons/signature-glow.png';
 import background01 from '../static/images/background/background_01.jpg';
 import background02 from '../static/images/background/background_02.jpg';
@@ -53,4 +53,4 @@ function Home() {
     );
 }
 
-export default Home;
+export { Home };

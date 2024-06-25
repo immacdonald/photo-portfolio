@@ -1,35 +1,42 @@
-import React, { useState, useContext } from 'react';
+import React, { ComponentType, useState } from 'react';
 import classNames from 'classnames';
 import style from './Sidebar.module.scss';
-import NavLink from './NavLink';
-import NavSublinks from './NavSublinks';
-import { WebsiteContext } from '../contexts/WebsiteContext';
-//import { Bulb, LinkedIn, Instagram, Mail } from '../assets/index';
+import { NavLink } from './NavLink';
+import { NavSublinks } from './NavSublinks';
+// import { Bulb, LinkedIn, Instagram, Mail } from '../assets/index';
 
 import signature from '../static/images/icons/signature.png';
-import logo from '../static/images/icons/logo.png'
+import logo from '../static/images/icons/logo.png';
+import { useWebsiteContext } from 'src/contexts/useWebsiteContext';
+import { Bulb, Instagram, LinkedIn, Mail } from 'src/assets';
+import { Button, IconProps, Row, SunFilled, MoonFilled } from 'phantom-library';
 
-function Sidebar() {
+interface Social {
+    platform: string;
+    logo: ComponentType<IconProps>;
+    handle: string;
+    link: string;
+}
+
+const Sidebar: React.FC = () => {
     const {
         sidebar, setSidebar, theme, setTheme, mobile,
-    } = useContext(WebsiteContext);
+    } = useWebsiteContext();
 
-    // Sidebar can be controlled via hover or click
     const toggleSidebar = () => {
         setSidebar(!sidebar);
     };
 
-    const hoverSidebar = (hovering) => {
+    const hoverSidebar = (hovering: boolean) => {
         if (!mobile) {
             setSidebar(hovering);
         }
     };
 
-    // Social media buttons dynamically set the display and link text
     const defaultContactText = 'Contact Me';
-    const [contact, setContact] = useState(defaultContactText);
-    const [contactLink, setContactLink] = useState(null);
-    const assignSocial = (social = null) => {
+    const [contact, setContact] = useState<string>(defaultContactText);
+    const [contactLink, setContactLink] = useState<string | null>(null);
+    const assignSocial = (social: Social | null = null) => {
         setContact(social ? social.handle : defaultContactText);
         setContactLink(social ? social.link : null);
     };
@@ -40,41 +47,34 @@ function Sidebar() {
         }
     };
 
-    const socials = [
+    const socials: Social[] = [
         {
             platform: 'Instagram',
-            logo: null, //<Instagram />,
+            logo: Instagram,
             handle: '@kamlinphotography',
             link: 'https://instagram.com/kamlinphotography',
         },
         {
             platform: 'LinkedIn',
-            logo: null, //<LinkedIn />,
+            logo: LinkedIn,
             handle: 'Kam Lin on LinkedIn',
             link: 'https://www.linkedin.com/in/kam-lin-567670186/',
         },
         {
             platform: 'Email',
-            logo: null, //<Email />,
+            logo: Mail,
             handle: 'kammiea.lin@gmail.com',
             link: 'mailto:kammiealin@gmail.com',
         },
     ];
 
     const toggleTheme = () => (theme === 'light' ? setTheme('dark') : setTheme('light'));
-    const oppositeTheme = (currentTheme) => {
-        if (currentTheme === 'light') {
-            return 'dark';
-        }
-        return 'light';
-    };
 
-    // Sidebar changes style based on if it is in an open or closed state
     const sidebarClasses = classNames(
         style.sidebar,
         {
             [style.closed]: !sidebar,
-        },
+        }
     );
 
     return (
@@ -94,27 +94,17 @@ function Sidebar() {
                         <NavLink label="CV" link="/cv" />
                     </nav>
                 </div>
-                <div className={style.socials} role="presentation" onClick={visitSocial} onKeyDown={visitSocial} onMouseLeave={() => assignSocial()}>
+                <div className={style.socials}>
                     <div className={style.socialsText}>{contact}</div>
-                    <div className={style.socialsLinks}>
+                    <Row gap="4px">
                         {socials.map((social) => (
-                            <div className={style.iconButton} key={social.platform} onMouseEnter={() => assignSocial(social)}>
-                                <div className={style.icon}>
-                                    {social.logo}
-                                </div>
-                            </div>
+                            <Button key={social.platform} onHover={() => assignSocial(social)} Icon={social.logo} link={social.link} rounded/>
                         ))}
-                    </div>
+                        <Button Icon={theme == 'light' ? SunFilled : MoonFilled} onClick={toggleTheme} rounded />
+                    </Row>
                 </div>
-                <div className={style.theme} role="presentation" onClick={toggleTheme} onKeyDown={toggleTheme}>
-                    <div className={style.themeInner}>
-                        <div className={style.themeToggle}>
-                            {/*<Bulb />*/}
-                        </div>
-                        <div className={style.themeLabel}>
-                            {`Toggle ${oppositeTheme(theme)} Theme`}
-                        </div>
-                    </div>
+                <div className={style.theme} role="presentation" >
+                    
                 </div>
             </div>
             <div className={style.toggleButton} role="presentation" onClick={toggleSidebar} onKeyDown={toggleSidebar}>
@@ -123,6 +113,6 @@ function Sidebar() {
             </div>
         </div>
     );
-}
+};
 
-export default Sidebar;
+export { Sidebar };

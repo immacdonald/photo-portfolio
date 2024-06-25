@@ -1,13 +1,17 @@
-import React, { useContext } from 'react';
+import React, { ReactNode } from 'react';
 import classNames from 'classnames';
 import style from './Page.module.scss';
-import { WebsiteContext } from '../contexts/WebsiteContext';
-import Footer from './Footer';
+import { Footer } from './Footer';
+import { useWebsiteContext } from 'src/contexts/useWebsiteContext';
 
-function Page(props) {
-    const { children, forceTheme = false, altFooter = false } = props;
+interface PageProps {
+    children: ReactNode;
+    forceTheme?: string | false;
+    altFooter?: boolean;
+}
 
-    const { theme, sidebar, mobile } = useContext(WebsiteContext);
+const Page: React.FC<PageProps> = ({ children, forceTheme = false, altFooter = false }) => {
+    const { theme, sidebar, mobile } = useWebsiteContext();
 
     // A specific site theme can be forced for particular pages, overriding user's preferences
     if (forceTheme) {
@@ -24,7 +28,7 @@ function Page(props) {
         },
         {
             [style.mobile]: mobile,
-        },
+        }
     );
 
     return (
@@ -39,6 +43,6 @@ function Page(props) {
             </div>
         </div>
     );
-}
+};
 
-export default Page;
+export { Page };

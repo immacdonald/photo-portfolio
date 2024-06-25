@@ -1,30 +1,15 @@
-import React, { useContext, useEffect, Fragment } from 'react';
+import { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
-
-import Home from './pages/Home';
-import Biography from './pages/Biography';
-import CV from './pages/CV';
-import Orion from './pages/Orion';
-import Tub from './pages/Tub';
-import Sidebar from './components/Sidebar';
-
-// Site-wide base styling
+import { Sidebar } from './components/Sidebar';
 import './App.module.scss';
-import { WebsiteContext, WebsiteContextProvider } from './contexts/WebsiteContext';
-import useWindowSize from './hooks/useWindowSize';
+import { PhantomApp, useWindowSize } from 'phantom-library';
+import { useWebsiteContext } from './contexts/useWebsiteContext';
+import { Home, Biography, Orion, Tub, CV } from './pages';
 
-export default function App() {
-    return (
-        <WebsiteContextProvider>
-            <AppContent />
-        </WebsiteContextProvider>
-    );
-}
-
-function AppContent() {
+const App = () => {
     const {
         mobile, setMobile, sidebar,
-    } = useContext(WebsiteContext);
+    } = useWebsiteContext();
 
     const { width } = useWindowSize();
     const mobileThreshold = 768;
@@ -40,7 +25,7 @@ function AppContent() {
     }, [mobile, sidebar]);
 
     return (
-        <>
+        <PhantomApp anchors={false} cssProperties={{display: "block"}}>
             <Sidebar />
             <Routes>
                 <Route index element={<Home />} />
@@ -51,6 +36,8 @@ function AppContent() {
                 </Route>
                 <Route path="cv" element={<CV />} />
             </Routes>
-        </>
+        </PhantomApp>
     );
 }
+
+export { App }

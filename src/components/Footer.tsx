@@ -2,9 +2,11 @@ import React from 'react';
 import classNames from 'classnames';
 import style from './Footer.module.scss';
 
-function Footer(props) {
-    const { alt = false } = props;
+interface FooterProps {
+    alt: boolean;
+}
 
+const Footer: React.FC<FooterProps> = ( { alt }) => {
     const footerClases = classNames(
         style.footer,
         {
@@ -23,4 +25,4 @@ function Footer(props) {
     );
 }
 
-export default Footer;
+export { Footer };

@@ -14,18 +14,32 @@ import 'yet-another-react-lightbox/plugins/thumbnails.css';
 import 'yet-another-react-lightbox/plugins/captions.css';
 
 import './Gallery.module.scss';
-import useWindowSize from '../hooks/useWindowSize';
+import { useWindowSize } from 'phantom-library';
 
-function Gallery(props) {
-    const {
-        photos, path, description = '', exactLayout = false,
-    } = props;
+interface Photo {
+    file: string;
+    title: string;
+}
 
-    const [index, setIndex] = useState(-1);
-    const [loadedPhotos, setPhotos] = useState([]);
+interface LoadedPhoto {
+    src: string;
+    width: number;
+    height: number;
+    description: string;
+}
 
-    // Loading the photos async to be used by photo-album and lightbox
-    const loadImageDimensions = (photo) => {
+interface GalleryProps {
+    photos: Photo[];
+    path: string;
+    description?: string;
+    exactLayout?: boolean;
+}
+
+const Gallery: React.FC<GalleryProps> = ({ photos, description = '', exactLayout = false }) => {
+    const [index, setIndex] = useState<number>(-1);
+    const [loadedPhotos, setPhotos] = useState<LoadedPhoto[]>([]);
+
+    const loadImageDimensions = (photo: Photo): Promise<LoadedPhoto> => {
         return new Promise((resolve) => {
             const image = new Image();
             image.src = photo.file;
@@ -35,6 +49,7 @@ function Gallery(props) {
                     src: image.src,
                     width: image.width,
                     height: image.height,
+                    description: photo.title,
                 });
             };
     
@@ -43,15 +58,16 @@ function Gallery(props) {
                     src: image.src,
                     width: 0,
                     height: 0,
+                    description: photo.title,
                 });
             };
         });
     };
     
     const loadImages = async () => {
-        const imagePromises = photos.map(async (photo, i) => {
+        const imagePromises = photos.map(async (photo) => {
             const { src, width, height } = await loadImageDimensions(photo);
-            const photoDescription = description ? `${photos[i].title} \n ${description}` : photos[i].title;
+            const photoDescription = description ? `${photo.title} \n ${description}` : photo.title;
             return {
                 src,
                 width,
@@ -68,25 +84,19 @@ function Gallery(props) {
         loadImages();
     }, []);
 
-    // Gallery sizing with screen-size breakpoints based on a 6 column default
     const { width } = useWindowSize();
 
-    const photosPerRow = () => {
+    const photosPerRow = (): number => {
         if (width <= 480) {
-            // Phone
             return 1;
         }
         if (width <= 960) {
-            // Tablet / small laptop
             return 3;
         }
-        // Computer
         return 6;
     };
 
-    // Fixes an issue with the PhotoAlbum not rendering when the row height is below the default 150px
     const targetRowHeight = 1;
-    // Exact min/max requirements can causing the album to fail to render for irregular photo sizes
     const layoutVariance = exactLayout ? 0 : 1;
 
     return (
@@ -108,6 +118,6 @@ function Gallery(props) {
             />
         </div>
     );
-}
+};
 
-export default Gallery;
+export { Gallery };

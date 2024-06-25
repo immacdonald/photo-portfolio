@@ -1,3 +1,11 @@
+:root, ::selection {
+	//--font-body: "Times New Roman", serif;
+	--font-body: 'Bebas Neue', cursive;
+	--font-header: 'Bebas Neue', cursive;
+	--color-selection: var(--c-accent-secondary);
+	--color-surface-page: var(--grey-1);
+}
+
 :root[data-mode="light"]  {
 	--c-text-primary: #333;
 	--c-text-action: #636363;
@@ -22,4 +30,15 @@
 	--c-background-secondary: #000;
 	--c-disabled-color: #302e29;
 	--v-invert: 1;
+}
+
+a {
+	text-decoration: none !important;
+}
+
+p {
+	font-family: "Times New Roman", serif;
+	font-weight: 300;
+	font-style: normal;
+	line-height: 1.9;
 }

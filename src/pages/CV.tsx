@@ -1,8 +1,7 @@
-import React from 'react';
 import style from './CV.module.scss';
-import Page from '../components/Page';
+import { Page } from '../components/Page';
 
-function CV() {
+const CV: React.FC = () => {
     return (
         <Page>
             <h1>Curriculum Vitae</h1>
@@ -25,4 +24,4 @@ function CV() {
     );
 }
 
-export default CV;
+export { CV };

@@ -1,20 +1,11 @@
 @use "./styles";
 
-* {
-    margin: 0;
-    padding: 0;   
-}
-
-*, *:before, *:after {
-    box-sizing: inherit;
-}
-
 html {
     height: 100%;
 	display: block;
     box-sizing: border-box;
 
-	&::-webkit-scrollbar {
+	/*&::-webkit-scrollbar {
 	  width: 10px;
 	}
   
@@ -23,20 +14,15 @@ html {
 	}
   
 	&::-webkit-scrollbar-thumb {
-	  background-color: lightgrey;
+	  background-color: var(--c-border-primary);
 	  border-radius: 10px;
-	  border: 3px solid var(--c-border-primary);
-	}
-}
-
-::selection {
-	background: var(--c-accent-secondary);
+	  border: 3px solid lightgrey;
+	}*/
 }
 
 body {
     height: 100%;
 	line-height: 1.5;
-	font-family: 'Bebas Neue', cursive;
 	background-color: var(--c-background-primary);
 	color: var(--c-text-primary);
 	overflow-x: hidden;

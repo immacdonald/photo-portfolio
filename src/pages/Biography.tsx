@@ -1,6 +1,5 @@
-import React from 'react';
 import style from './Biography.module.scss';
-import Page from '../components/Page';
+import { Page } from '../components/Page';
 import selfPortrait from '../static/images/kam.jpg';
 
 function Biography() {
@@ -33,4 +32,4 @@ function Biography() {
     );
 }
 
-export default Biography;
+export { Biography };
