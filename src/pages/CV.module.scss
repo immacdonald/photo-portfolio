@@ -1,9 +1,0 @@
-@use "../styles" as s;
-
-.bodyText {
-    @include s.bodyText;
-
-    div {
-        margin-bottom: 1em;
-    }
-}

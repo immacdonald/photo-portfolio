@@ -1,15 +1,22 @@
-[class*="yarl__thumbnails_thumbnail"] { 
+@use '../styles' as *;
+
+// Lightbox styling
+[class*='yarl__thumbnails_thumbnail'] {
     background-color: white;
 }
 
-[class*="yarl__slide_captions_container"] {
+[class*='yarl__slide_captions_container'] {
     background-color: black;
 }
 
-[class*="react-photo-album--photo"] {
-    transition: filter ease 0.5s;
+.gallery {
+    img {
+        height: auto;
+        cursor: grab;
 
-    &:hover {
-        filter: brightness(0.8);
+        &:hover {
+            filter: brightness(80%);
+            transform: scale(105%);
+        }
     }
 }

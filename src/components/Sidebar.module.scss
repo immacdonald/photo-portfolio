@@ -1,187 +1,103 @@
-@use "../styles" as s;
+@use '../styles' as *;
 
-$borderColor: var(--c-border-primary);
-$borderWidth: 1px;
+$border-width: 1px;
+$background-color: var(--color-surface-foreground);
 
 .sidebar {
+    --font-body: var(--font-header);
+
     position: fixed;
     height: 100%;
-    width: s.$sidebarWidth;
-    background-color: var(--c-background-secondary);
-	border-right: $borderWidth solid $borderColor;	
-	z-index: 100;
+    left: 0%;
+    width: $sidebar-width;
+    background-color: $background-color;
+    border-right: var(--border-light);
+    z-index: 100;
     display: flex;
     flex-direction: column;
-	transition: transform ease 0.5s;
-	padding: 0 s.$sidebarPadding;
+    transition: transform ease 0.5s;
+    padding: 0 $sidebar-padding;
 
-	&.closed {
-		transform: translateX(calc(-#{s.$sidebarWidth} + #{s.$sidebarPoke}));
-	}
-}
+    &.closed {
+        transform: translateX(-180px);
+    }
 
-.sidebarContent {
-	width: 100%;
-	height: 100%;
-	display: flex;
-	align-items: center;
-	flex-direction: column;
-	overflow: hidden;
-}
-
-.navigation {
-	width: 100%;
-	min-height: 250px;
-	flex-grow: 1;
-}
-
-.links {
-	display: flex;
-	flex-direction: column;
-	align-items: flex-start;
-    font-size: 36px;
-    line-height: 1;
-	text-transform: uppercase;
-	margin-top: 1em;
-
-    a, button {
-		font: inherit;
-		text-transform: inherit;
-		text-align: inherit;
-		background-color: transparent;
-		border: none;
-        display: block;
+    .navigation {
         width: 100%;
-        padding-top: 2px;
-        height: 1em;
-        color: var(--c-text-primary);
-		transition: color ease 0.5s;
-        cursor: pointer;
-		letter-spacing: .025em;
+        min-height: 250px;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        line-height: 1;
+        margin-top: $lg;
 
-        &:hover, &:focus, &:active {
-            color: var(--c-text-action);
+        a,
+        button {
+            text-transform: uppercase;
+            font-size: 32px;
         }
     }
-
-    > div {
-        width: 100%;
-		margin: 0.05em 0;
-    }
 }
 
-.toggleButton {
-	position: absolute;
-	top: calc(50% - #{s.$sidebarToggle}/2);
-	right: calc(-#{s.$sidebarToggle}/2);
-	width: s.$sidebarToggle;
-	height: s.$sidebarToggle;
-	border-radius: calc(#{s.$sidebarToggle}/2);
-	background-color: var(--c-background-secondary);
-	transition: background-color ease 0.5s;
+.toggle {
+    position: absolute;
+    top: calc(50% - #{$sidebar-toggle}/ 2);
+    right: calc(-#{$sidebar-toggle}/ 2);
+    width: $sidebar-toggle;
+    height: $sidebar-toggle;
+    border-radius: calc(#{$sidebar-toggle}/ 2) !important;
+    background-color: $background-color !important;
+    transition: background-color ease 0.5s;
 
-	&:hover {
-		background-color: $borderColor;
-	}
+    &:hover {
+        background-color: var(--border-color-light) !important;
+    }
 
-	img {
-		position: absolute;
-		top: 5px;
-		left: 10px;
-		width: calc(#{s.$sidebarToggle} - 10px);
-		z-index: 950;
-		filter: invert(var(--v-invert));
-	}
+    img {
+        position: absolute;
+        top: 5px;
+        left: 10px;
+        width: calc(#{$sidebar-toggle} - 10px);
+        z-index: 950;
+        filter: invert(var(--v-invert));
+    }
 
-
-	.visual {
-		position: absolute;
-		left: 50%;
-		width: 50%;
-		height: 100%;
-		border-top-right-radius: calc(#{s.$sidebarToggle} + #{$borderWidth});
-		border-bottom-right-radius: calc(#{s.$sidebarToggle} + #{$borderWidth});
-		border: $borderWidth solid $borderColor;
-		border-left: 0;
-	}
+    .visual {
+        position: absolute;
+        left: 50%;
+        top: 0%;
+        width: 50%;
+        height: 100%;
+        border-top-right-radius: calc(#{$sidebar-toggle} + #{$border-width});
+        border-bottom-right-radius: calc(#{$sidebar-toggle} + #{$border-width});
+        border: var(--border-light);
+        border-left: 0;
+    }
 }
 
 .signature {
-	width: 100%;
-	height: 5vh;
-	padding: 0.25em;
-	margin-top: 2em;
-	text-align: center;
+    width: 100%;
+    height: 5vh;
+    padding: 0.25em;
+    margin-top: 2em;
+    text-align: center;
 
-	img {
-		width: 100%;
-		filter: invert(var(--v-invert));
-	}
+    img {
+        width: 100%;
+        filter: invert(var(--v-invert));
+    }
 }
 
-.socials {
-	width: 100%;
-	padding-top: 2.5vh;
-	padding-bottom: 1vh;
-	cursor: pointer;
-}
+.sublinks {
+    width: 100%;
 
-.socialsText {
-	font-size: 20px;
-	text-align: center;
-}
+    > div > [class*='content'] {
+        padding: 0 !important;
 
-.socialsLinks {
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
-	align-items: center;
-
-
-	> div {
-		flex: 1 1 0px;
-		aspect-ratio: 1;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
-}
-
-.theme {
-	width: 100%;
-	border-top: 1px solid var(--c-border-primary);
-	padding-top: 8px;
-}
-
-.themeInner {
-	display: flex;
-	align-items: center;
-	padding: 0 12px;
-}
-
-.themeToggle {
-	width: 20px;
-	aspect-ratio: 1;
-	color: var(--c-accent-primary);
-}
-
-.themeLabel {
-	margin-left: 0.5em;
-	font-size: 16px;
-}
-
-.iconButton {
-	width: 40%;
-	aspect-ratio: 1;
-}
-
-.icon {
-	width: 100%;
-	height: 100%;
-	padding: 12px;
-	transition: color ease 0.5s;
-
-	&:focus, &:hover {
-		color: var(--c-accent-primary);
-	}
+        a,
+        button {
+            font-size: 24px !important;
+        }
+    }
 }
