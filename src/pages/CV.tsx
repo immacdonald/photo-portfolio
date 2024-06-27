@@ -1,4 +1,4 @@
-import { Page, Section } from "phantom-library";
+import { Page, Section } from 'phantom-library';
 
 const CV: React.FC = () => {
     return (

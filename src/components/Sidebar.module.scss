@@ -5,6 +5,7 @@ $background-color: var(--color-surface-foreground);
 
 .sidebar {
     --font-body: var(--font-header);
+
     position: fixed;
     height: 100%;
     left: 0%;
@@ -45,12 +46,12 @@ $background-color: var(--color-surface-foreground);
     right: calc(-#{$sidebar-toggle}/ 2);
     width: $sidebar-toggle;
     height: $sidebar-toggle;
-    border-radius: calc(#{$sidebar-toggle}/ 2);
-    background-color: $background-color;
+    border-radius: calc(#{$sidebar-toggle}/ 2) !important;
+    background-color: $background-color !important;
     transition: background-color ease 0.5s;
 
     &:hover {
-        background-color: var(--border-color-light);
+        background-color: var(--border-color-light) !important;
     }
 
     img {
@@ -88,14 +89,10 @@ $background-color: var(--color-surface-foreground);
     }
 }
 
-.contact {
-    font-family: var(--font-header);
-}
-
 .sublinks {
     width: 100%;
 
-    >div>[class*="content"] {
+    > div > [class*='content'] {
         padding: 0 !important;
 
         a,

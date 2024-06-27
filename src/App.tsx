@@ -1,9 +1,9 @@
-import { Route, Routes } from 'react-router-dom';
-import { Sidebar } from './components/Sidebar';
-import { PhantomApp, useResponsiveContext } from 'phantom-library';
-import { Biography, CV, Home, Orion, Tub } from './pages';
-import { Footer } from '@components/Footer';
 import { useEffect } from 'react';
+import { PhantomApp, useResponsiveContext } from 'phantom-library';
+import { Route, Routes } from 'react-router-dom';
+import { Footer } from '@components/Footer';
+import { Sidebar } from './components/Sidebar';
+import { Biography, CV, Home, Orion, Tub } from './pages';
 
 const App = () => {
     const { isMobile } = useResponsiveContext();
@@ -13,7 +13,7 @@ const App = () => {
     }, [isMobile]);
 
     return (
-        <PhantomApp anchors={false} cssProperties={{ display: 'flex' }}>
+        <PhantomApp anchors={false}>
             <Sidebar />
             <Routes>
                 <Route index element={<Home />} />

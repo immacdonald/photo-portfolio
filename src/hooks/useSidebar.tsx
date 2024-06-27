@@ -1,5 +1,5 @@
 import type { SetState } from 'phantom-library';
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 const useSidebar = (): [boolean, SetState<boolean>] => {
     const [sidebar, setSidear] = useState<boolean>(true);
@@ -11,4 +11,4 @@ const useSidebar = (): [boolean, SetState<boolean>] => {
     return [sidebar, setSidear];
 };
 
-export default useSidebar;
+export { useSidebar };

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import PhotoAlbum from 'react-photo-album';
 import Lightbox from 'yet-another-react-lightbox';
 import 'yet-another-react-lightbox/styles.css';
 import Captions from 'yet-another-react-lightbox/plugins/captions';
@@ -9,61 +8,50 @@ import Thumbnails from 'yet-another-react-lightbox/plugins/thumbnails';
 import Zoom from 'yet-another-react-lightbox/plugins/zoom';
 import 'yet-another-react-lightbox/plugins/thumbnails.css';
 import 'yet-another-react-lightbox/plugins/captions.css';
-import './Gallery.module.scss';
-import { useWindowSize } from 'phantom-library';
+import style from './Gallery.module.scss';
+import type { LoadedImage, ResponsiveType } from 'phantom-library';
+import { Column, Row, loadImageDimensions, range, sumArray, useResponsiveContext } from 'phantom-library';
 
 interface Photo {
     file: string;
     title: string;
 }
 
-interface LoadedPhoto {
-    src: string;
-    width: number;
-    height: number;
-    description: string;
+interface BaseGalleryLayout {
+    exact: boolean;
+}
+
+interface SimpleLayout extends BaseGalleryLayout {
+    exact: boolean;
+    rows?: number;
+    columns?: number;
+}
+
+interface ExactRow {
+    photos: number;
+    width?: string;
+}
+
+interface ExactLayout extends BaseGalleryLayout {
+    rows: ExactRow[]
 }
 
 interface GalleryProps {
     photos: Photo[];
-    path: string;
+    layout: ResponsiveType<GalleryLayout>
     description?: string;
-    exactLayout?: boolean;
 }
 
-const Gallery: React.FC<GalleryProps> = ({ photos, description = '', exactLayout = false }) => {
+type GalleryLayout = SimpleLayout | ExactLayout;
+
+const Gallery: React.FC<GalleryProps> = ({ photos, layout, description = '' }) => {
     const [index, setIndex] = useState<number>(-1);
-    const [loadedPhotos, setPhotos] = useState<LoadedPhoto[]>([]);
-
-    const loadImageDimensions = (photo: Photo): Promise<LoadedPhoto> => {
-        return new Promise((resolve) => {
-            const image = new Image();
-            image.src = photo.file;
-
-            image.onload = () => {
-                resolve({
-                    src: image.src,
-                    width: image.width,
-                    height: image.height,
-                    description: photo.title
-                });
-            };
-
-            image.onerror = () => {
-                resolve({
-                    src: image.src,
-                    width: 0,
-                    height: 0,
-                    description: photo.title
-                });
-            };
-        });
-    };
+    const [loadedPhotos, setPhotos] = useState<LoadedImage[]>([]);
 
     const loadImages = async () => {
         const imagePromises = photos.map(async (photo) => {
-            const { src, width, height } = await loadImageDimensions(photo);
-            const photoDescription = description ? `${photo.title} \n ${description}` : photo.title;
+            const { src, width, height } = await loadImageDimensions(photo.file);
+            const photoDescription = description ? `${photo.title}\n ${description}` : photo.title;
             return {
                 src,
                 width,
@@ -80,30 +68,75 @@ const Gallery: React.FC<GalleryProps> = ({ photos, description = '', exactLayout
         loadImages();
     }, []);
 
-    const { width } = useWindowSize();
+    const { parse } = useResponsiveContext();
+    const galleryLayout = parse<GalleryLayout>(layout)!;
+    const space = 8;
 
-    const photosPerRow = (): number => {
-        if (width <= 480) {
-            return 1;
+    const getGallery = () => {
+        if (galleryLayout.exact) {
+            const gallery: ExactLayout = galleryLayout as ExactLayout
+            return (
+                <Column className={style.gallery} gap={`${space}px`}>
+                    {gallery.rows.map((row: ExactRow, index: number) => {
+                        const start = index > 0 ? sumArray(gallery.rows, 'photos', 0, index) : 0;
+                        const rowWidth = sumArray(loadedPhotos, 'width', start, start + row.photos);
+                        return (
+                            <Row gap={`${space}px`} key={index} cssProperties={{ width: row.width }}>
+                                {range(row.photos).map((column: number) => {
+                                    const photoIndex = start + column;
+                                    const photo = loadedPhotos[photoIndex]
+                                    const width = `calc((100% - ${(row.photos - 1) * space}px) / ${(1 / (photo.width / rowWidth))})`;
+                                    return <img
+                                        src={photo.src}
+                                        key={photoIndex}
+                                        style={{ width, aspectRatio: `${photo.width}/${photo.height}` }}
+                                        onClick={() => setIndex(photoIndex)}
+                                    />
+                                })}
+                            </Row>
+                        )
+                    })}
+                </Column>
+            )
+        } else {
+            const gallery: SimpleLayout = galleryLayout as SimpleLayout
+            const rows = gallery.rows ?? Math.ceil(loadedPhotos.length / gallery.columns!);
+            const columns = gallery.columns ?? Math.ceil(loadedPhotos.length / rows!);
+
+            const photoRows = Array.from({ length: rows }, (_, rowIndex) =>
+                loadedPhotos.slice(rowIndex * columns, (rowIndex + 1) * columns)
+            );
+
+            return (
+                <Column className={style.gallery} gap={`${space}px`}>
+                    {photoRows.map((photoRow, rowIndex: number) => {
+                        const start = rowIndex > 0 ? sumArray(photoRows, 'length', 0, rowIndex) : 0;
+                        const rowWidth = sumArray(loadedPhotos, 'width', start, start + photoRow.length);
+                        return (
+                            <Row gap={`${space}px`} key={rowIndex}>
+                                {photoRow.map((photo, column: number) => {
+                                    const photoIndex = start + column;
+                                    const width = `calc((100% - ${(photoRow.length - 1) * space}px) / ${(1 / (photo.width / rowWidth))})`;
+                                    return (
+                                        <img
+                                            src={photo.src}
+                                            key={photoIndex}
+                                            style={{ width, aspectRatio: `${photo.width}/${photo.height}` }}
+                                            onClick={() => setIndex(photoIndex)}
+                                        />
+                                    )
+                                })}
+                            </Row>
+                        )
+                    })}
+                </Column>
+            )
         }
-        if (width <= 960) {
-            return 3;
-        }
-        return 6;
-    };
+    }
 
-    const targetRowHeight = 1;
-    const layoutVariance = exactLayout ? 0 : 1;
-
-    return (
+    return loadedPhotos.length > 0 && (
         <div>
-            <PhotoAlbum
-                photos={loadedPhotos}
-                layout="rows"
-                rowConstraints={{ minPhotos: photosPerRow() - layoutVariance, maxPhotos: photosPerRow() + layoutVariance }}
-                targetRowHeight={targetRowHeight}
-                onClick={({ index: clickedIndex }) => setIndex(clickedIndex)}
-            />
+            {getGallery()}
             <Lightbox
                 slides={loadedPhotos}
                 open={index >= 0}
@@ -112,8 +145,8 @@ const Gallery: React.FC<GalleryProps> = ({ photos, description = '', exactLayout
                 plugins={[Fullscreen, Slideshow, Thumbnails, Zoom, Captions]}
                 captions={{ showToggle: false, descriptionTextAlign: 'center', descriptionMaxLines: 2 }}
             />
-        </div>
-    );
+        </div>)
+
 };
 
 export { Gallery };

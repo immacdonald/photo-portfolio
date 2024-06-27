@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Page, Section, useInterval, useResponsiveContext } from 'phantom-library';
 import background01 from '../static/images/background/background_01.jpg';
 import background02 from '../static/images/background/background_02.jpg';
 import background03 from '../static/images/background/background_03.jpg';
@@ -11,7 +12,6 @@ import background09 from '../static/images/background/background_09.jpg';
 import background10 from '../static/images/background/background_10.jpg';
 import glowingSignature from '../static/images/icons/signature-glow.png';
 import style from './Home.module.scss';
-import { useInterval, useResponsiveContext, Page, Section } from 'phantom-library';
 
 function Home() {
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -20,8 +20,8 @@ function Home() {
     const { setTheme } = useResponsiveContext();
 
     useEffect(() => {
-        setTheme('dark')
-    }, [])
+        setTheme('dark');
+    }, []);
 
     useInterval(() => {
         setCurrentIndex((prevIndex) => (prevIndex + 1) % backgroundImages.length);

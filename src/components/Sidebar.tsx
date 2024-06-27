@@ -49,13 +49,6 @@ const Sidebar: React.FC = () => {
         }
     };
 
-    const defaultContactText = 'Contact Me';
-    const [contact, setContact] = useState<string>(defaultContactText);
-
-    const assignSocial = (social: Social | null = null) => {
-        setContact(social ? social.handle : defaultContactText);
-    };
-
     const toggleTheme = () => (theme === 'light' ? setTheme('dark') : setTheme('light'));
 
     const sidebarClasses = classNames(style.sidebar, {
@@ -68,26 +61,25 @@ const Sidebar: React.FC = () => {
                 <img src={signature} alt="Kam's Signature" />
             </div>
             <nav className={style.navigation}>
-                <Button label="Home" link="/" visual='text' align='start' full />
-                <Button label="Biography" link="/biography" visual='text' align='start' full />
-                <Accordion className={style.sublinks} label="Works" Icon={null} buttonStyle='text' borderless compact defaultState={false} >
-                    <Button label="Orion" link="/works/orion" visual='text' align='end' size='small' full />
-                    <Button label="Tub" link="/works/tub" visual='text' align='end' size='small' full />
+                <Button label="Home" link="/" visual="text" align="start" full />
+                <Button label="Biography" link="/biography" visual="text" align="start" full />
+                <Accordion className={style.sublinks} label="Works" Icon={null} buttonStyle="text" borderless compact defaultState={false}>
+                    <Button label="Orion" link="/works/orion" visual="text" align="end" size="small" full />
+                    <Button label="Tub" link="/works/tub" visual="text" align="end" size="small" full />
                 </Accordion>
-                <Button label="CV" link="/cv" visual='text' align='start' full />
+                <Button label="CV" link="/cv" visual="text" align="start" full />
             </nav>
-            <Column verticalAlign='end'>
-                <span className={style.contact}>{contact}</span>
+            <Column verticalAlign="end">
                 <Row gap="4px">
                     {socials.map((social) => (
-                        <Button key={social.platform} onHover={() => assignSocial(social)} Icon={social.logo} link={social.link} rounded />
+                        <Button key={social.platform} Icon={social.logo} link={social.link} visual='text' rounded />
                     ))}
-                    <Button Icon={theme == 'light' ? SunFilled : MoonFilled} onClick={toggleTheme} rounded />
+                    <Button Icon={theme == 'light' ? SunFilled : MoonFilled} onClick={toggleTheme} visual='text' rounded />
                 </Row>
             </Column>
-            <br/>
+            <br />
         </Column>
-    )
+    );
 
     return (
         <aside
