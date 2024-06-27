@@ -1,29 +1,19 @@
-import { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { Sidebar } from './components/Sidebar';
-import './App.module.scss';
-import { PhantomApp, useWindowSize } from 'phantom-library';
-import { useWebsiteContext } from './contexts/useWebsiteContext';
+import { PhantomApp, useResponsiveContext } from 'phantom-library';
 import { Biography, CV, Home, Orion, Tub } from './pages';
+import { Footer } from '@components/Footer';
+import { useEffect } from 'react';
 
 const App = () => {
-    const { mobile, setMobile, sidebar } = useWebsiteContext();
-
-    const { width } = useWindowSize();
-    const mobileThreshold = 768;
+    const { isMobile } = useResponsiveContext();
 
     useEffect(() => {
-        if (width) {
-            setMobile(width <= mobileThreshold);
-        }
-    }, [width, setMobile]);
-
-    useEffect(() => {
-        document.body.style.overflow = mobile && sidebar ? 'hidden' : '';
-    }, [mobile, sidebar]);
+        document.documentElement.setAttribute('data-mobile', `${isMobile}`);
+    }, [isMobile]);
 
     return (
-        <PhantomApp anchors={false} cssProperties={{ display: 'block' }}>
+        <PhantomApp anchors={false} cssProperties={{ display: 'flex' }}>
             <Sidebar />
             <Routes>
                 <Route index element={<Home />} />
@@ -34,6 +24,7 @@ const App = () => {
                 </Route>
                 <Route path="cv" element={<CV />} />
             </Routes>
+            <Footer />
         </PhantomApp>
     );
 };

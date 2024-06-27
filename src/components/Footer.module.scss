@@ -3,22 +3,12 @@
 .footer {
     justify-content: center;
     display: flex;
-    border-top: 1px solid var(--c-border-primary);
     width: 100%;
-    height: $footer-height;
+    height: calc($footer-height + 4px);
+    font-family: var(--font-header);
 
-    &.alt {
-        border: none;
-
-        > div {
-            background-color: color-mix(in srgb, var(--c-background-primary) 50%, transparent);
-            padding: 0 8px;
-            border-radius: 8px;
-        }
-    }
-
-    .footerContent {
-        margin-top: 6px;
-        font-size: 14px;
+    .content {
+        margin-top: $xs;
+        font-size: $font-sm;
     }
 }

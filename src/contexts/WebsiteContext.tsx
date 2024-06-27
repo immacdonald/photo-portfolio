@@ -1,12 +1,10 @@
-import React, { createContext, ReactNode, useMemo, useState } from 'react';
+import type { SetState } from 'phantom-library';
+import { createContext, ReactNode, useMemo } from 'react';
+import useSidebar from 'src/hooks/useSidebar';
 
 interface WebsiteContextProps {
-    theme: string;
-    setTheme: React.Dispatch<React.SetStateAction<string>>;
-    mobile: boolean;
-    setMobile: React.Dispatch<React.SetStateAction<boolean>>;
     sidebar: boolean;
-    setSidebar: React.Dispatch<React.SetStateAction<boolean>>;
+    setSidebar: SetState<boolean>;
 }
 
 const WebsiteContext = createContext<WebsiteContextProps | undefined>(undefined);
@@ -16,20 +14,14 @@ interface WebsiteContextProviderProps {
 }
 
 const WebsiteContextProvider = ({ children }: WebsiteContextProviderProps): JSX.Element => {
-    const [theme, setTheme] = useState<string>('light');
-    const [mobile, setMobile] = useState<boolean>(false);
-    const [sidebar, setSidebar] = useState<boolean>(true);
+    const [sidebar, setSidebar] = useSidebar();
 
     const value = useMemo(
         () => ({
-            theme,
-            setTheme,
-            mobile,
-            setMobile,
             sidebar,
             setSidebar
         }),
-        [theme, mobile, sidebar]
+        [sidebar]
     );
 
     return <WebsiteContext.Provider value={value}>{children}</WebsiteContext.Provider>;
