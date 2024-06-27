@@ -8,9 +8,8 @@
         "paths": {
             "@assets/*": ["./src/assets/*"],
             "@components/*": ["./src/components/*"],
-            "@contexts": ["./src/contexts"],
             "@contexts/*": ["./src/contexts/*"],
-            "@hooks": ["./src/hooks"],
+            "@hooks/*": ["./src/hooks/*"],
             "@types": ["./src/types"],
             "@views": ["./src/views"]
         },

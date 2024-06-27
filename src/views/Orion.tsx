@@ -1,5 +1,5 @@
 import { Page, Section } from 'phantom-library';
-import { tubSeries } from '@assets/images';
+import { orionSeries } from '@assets/images';
 import { Gallery } from '@components/Gallery';
 
 const Orion: React.FC = () => {
@@ -8,7 +8,7 @@ const Orion: React.FC = () => {
             <Section transparent>
                 <h1>Orion, 2023</h1>
                 <Gallery
-                    photos={tubSeries.photos}
+                    photos={orionSeries.photos}
                     description="35mm Film, Silver Gelatin Print"
                     layout={{ base: { exact: false, columns: 6 }, md: { exact: false, columns: 3 }, xs: { exact: false, columns: 1 } }}
                 />

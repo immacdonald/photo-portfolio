@@ -1,5 +1,5 @@
 import { Page, Section } from 'phantom-library';
-import { orionSeries } from '@assets/images';
+import { tubSeries } from '@assets/images';
 import { Gallery } from '@components/Gallery';
 
 const Tub: React.FC = () => {
@@ -8,7 +8,7 @@ const Tub: React.FC = () => {
             <Section transparent>
                 <h1>Tub, 2022</h1>
                 <Gallery
-                    photos={orionSeries.photos}
+                    photos={tubSeries.photos}
                     description="Large Format Film, Silver Gelatin Print"
                     layout={{
                         base: { exact: true, rows: [{ photos: 4, width: '60%' }, { photos: 5 }, { photos: 5 }, { photos: 5 }, { photos: 5 }] },
