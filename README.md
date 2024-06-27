@@ -6,16 +6,16 @@ Made for the photographer Kam Lin, this is a portfolio website showcasing a vari
 
 ## Development
 
-Developed using React, the website is built to be lightweight and dynamic, offering a pleasant experience for the user while being easily modifiable by the developer for future additions. A global state is used throughout all pages to keep track of the current theme, status of the sidebar, and whether the device is considered to be mobile, all affecting various aspects of the user experience.
+Developed using [React](https://react.dev/), this portfolio is built to be lightweight and dynamic, offering a pleasant experience for the user while being easily modifiable by the developer for future additions. The website is written [TypeScript](https://www.typescriptlang.org/) and built with [Vite](https://vitejs.dev/).
 
 ### Styling
 
-Styling is done using Dart SASS to make use of the latest features implemented in SASS. These are seperated into CSS modules to be imported per-component to allow for a more modular design framework. Key colors and style variables are stored in the base style index to be used throughout the codebase to reduce repetition and ensure stylistic continuity between all elements and pages.
+Styling is done with [SCSS](https://sass-lang.com/) contained in [CSS Modules](https://github.com/css-modules/css-modules). Combining both the SCSS pre-processor with the flexibility of CSS modules leads to a much better developer experience and a smoother user experience on the website. Key colors and style variables are stored in the base style index to be used throughout the codebase to reduce repetition and ensure stylistic continuity between all elements, pages, and themes.
 
-### Versioning
+### Linting & Formatting
 
-`bump2version` is used to manage the version of the site and its package details.
+Linting is done with [ESLint](https://eslint.org/) while code formatting is done with [Prettier](https://prettier.io/) and [Stylelint](https://stylelint.io/). These can be triggered by executing `npm run format`.
 
-### Deployment
+## Deployment
 
 GitHub Pages is used for deploying the React app onto [kam-lin.com](kam-lin.com) through the use of the custom domain DNS feature.

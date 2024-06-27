@@ -49,6 +49,7 @@ function devConfig() {
 
 function prodConfig() {
     return {
-        ...baseConfig
+        ...baseConfig,
+        base: '/photo-portfolio/'
     };
 }

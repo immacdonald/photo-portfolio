@@ -1,10 +1,9 @@
-import React, { ComponentType, useState } from 'react';
-import classNames from 'classnames';
+import React, { ComponentType } from 'react';
+import clsx from 'clsx';
 import { Accordion, Button, Column, IconProps, MoonFilled, Row, SunFilled, UnstyledButton, useResponsiveContext } from 'phantom-library';
-import { Instagram, LinkedIn, Mail } from 'src/assets';
-import { useWebsiteContext } from 'src/contexts/useWebsiteContext';
-import logo from '../static/images/icons/logo.png';
-import signature from '../static/images/icons/signature.png';
+import { Instagram, LinkedIn, Mail } from '@assets/icons';
+import { logo, signature } from '@assets/images';
+import { useWebsiteContext } from '@contexts/useWebsiteContext';
 import style from './Sidebar.module.scss';
 
 interface Social {
@@ -51,7 +50,7 @@ const Sidebar: React.FC = () => {
 
     const toggleTheme = () => (theme === 'light' ? setTheme('dark') : setTheme('light'));
 
-    const sidebarClasses = classNames(style.sidebar, {
+    const sidebarClasses = clsx(style.sidebar, {
         [style.closed]: !sidebar
     });
 
@@ -72,9 +71,9 @@ const Sidebar: React.FC = () => {
             <Column verticalAlign="end">
                 <Row gap="4px">
                     {socials.map((social) => (
-                        <Button key={social.platform} Icon={social.logo} link={social.link} visual='text' rounded />
+                        <Button key={social.platform} Icon={social.logo} link={social.link} visual="text" rounded />
                     ))}
-                    <Button Icon={theme == 'light' ? SunFilled : MoonFilled} onClick={toggleTheme} visual='text' rounded />
+                    <Button Icon={theme == 'light' ? SunFilled : MoonFilled} onClick={toggleTheme} visual="text" rounded />
                 </Row>
             </Column>
             <br />

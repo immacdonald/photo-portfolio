@@ -1,16 +1,16 @@
 import { Page, Section } from 'phantom-library';
-import { Gallery } from '../components/Gallery';
-import { photos } from '../static/images/works/orion/index';
+import { orionSeries } from '@assets/images';
+import { Gallery } from '@components/Gallery';
 
-function Orion() {
+const Orion: React.FC = () => {
     return (
         <Page>
             <Section transparent>
                 <h1>Orion, 2023</h1>
                 <Gallery
-                    photos={photos}
+                    photos={orionSeries.photos}
                     description="35mm Film, Silver Gelatin Print"
-                    layout={{base: {exact: false, columns: 6}, md: {exact: false, columns: 3}, xs: {exact: false, columns: 1}}}
+                    layout={{ base: { exact: false, columns: 6 }, md: { exact: false, columns: 3 }, xs: { exact: false, columns: 1 } }}
                 />
                 <br />
                 <h3>About the Series</h3>
@@ -38,6 +38,6 @@ function Orion() {
             </Section>
         </Page>
     );
-}
+};
 
 export { Orion };

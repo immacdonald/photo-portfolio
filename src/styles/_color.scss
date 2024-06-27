@@ -6,7 +6,7 @@
 }
 
 :root {
-	--font-body: 'Times New Roman', serif;
+    --font-body: 'Times New Roman', serif;
     --font-header: 'Bebas Neue', cursive;
 }
 
@@ -17,7 +17,7 @@
 
 :root[data-theme='dark'] {
     --color-text: var(--color-text-on-dark);
-	--color-text-soft: var(--grey-4);
+    --color-text-soft: var(--grey-4);
     --color-surface-page: var(--grey-7);
     --color-surface-foreground: var(--black);
     --color-surface-background: var(--grey-7);
