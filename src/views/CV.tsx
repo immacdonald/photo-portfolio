@@ -1,6 +1,6 @@
 import { Page, Section } from 'phantom-library';
 
-const CV: React.FC = () => {
+export const CV: React.FC = () => {
     return (
         <Page>
             <Section transparent>
@@ -22,5 +22,3 @@ const CV: React.FC = () => {
         </Page>
     );
 };
-
-export { CV };

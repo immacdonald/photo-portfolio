@@ -4,8 +4,8 @@
     "private": true,
     "homepage": "http://www.kam-lin.com",
     "dependencies": {
-        "classnames": "^2.3.2",
-        "phantom-library": "^0.8.2",
+        "clsx": "^2.1.1",
+        "phantom-library": "^0.9.0",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "react-photo-album": "^2.2.2",
@@ -26,7 +26,7 @@
         "format": "npm run lint && npm run stylelint:fix && npm run prettier:fix"
     },
     "devDependencies": {
-        "@imacdonald/phantom-config": "^0.3.0",
+        "@imacdonald/phantom-config": "^0.4.2",
         "@types/node": "^20.11.7",
         "@types/react": "^18.2.15",
         "@types/react-dom": "^18.2.7",

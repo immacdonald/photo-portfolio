@@ -1,16 +1,20 @@
 import { Page, Section } from 'phantom-library';
-import { Gallery } from '../components/Gallery';
-import { photos } from '../static/images/works/tub/index';
+import { orionSeries } from '@assets/images';
+import { Gallery } from '@components/Gallery';
 
-function Tub() {
+const Tub: React.FC = () => {
     return (
         <Page>
             <Section transparent>
                 <h1>Tub, 2022</h1>
                 <Gallery
-                    photos={photos}
+                    photos={orionSeries.photos}
                     description="Large Format Film, Silver Gelatin Print"
-                    layout={{ base: {exact: true, rows: [{photos: 4, width: "60%"}, {photos: 5}, {photos: 5}, {photos: 5}, {photos: 5}]}, md: {exact: false, columns: 3}, xs: {exact: false, columns: 1}}}
+                    layout={{
+                        base: { exact: true, rows: [{ photos: 4, width: '60%' }, { photos: 5 }, { photos: 5 }, { photos: 5 }, { photos: 5 }] },
+                        md: { exact: false, columns: 3 },
+                        xs: { exact: false, columns: 1 }
+                    }}
                 />
                 <br />
                 <h3>About the Series</h3>
@@ -38,6 +42,6 @@ function Tub() {
             </Section>
         </Page>
     );
-}
+};
 
 export { Tub };

@@ -2,8 +2,8 @@ import { useEffect } from 'react';
 import { PhantomApp, useResponsiveContext } from 'phantom-library';
 import { Route, Routes } from 'react-router-dom';
 import { Footer } from '@components/Footer';
-import { Sidebar } from './components/Sidebar';
-import { Biography, CV, Home, Orion, Tub } from './pages';
+import { Sidebar } from '@components/Sidebar';
+import { Biography, CV, Home, Orion, Tub } from '@views';
 
 const App = () => {
     const { isMobile } = useResponsiveContext();

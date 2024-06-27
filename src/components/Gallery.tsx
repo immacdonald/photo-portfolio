@@ -1,3 +1,4 @@
+import type { LoadedImage, ResponsiveType } from 'phantom-library';
 import React, { useEffect, useState } from 'react';
 import Lightbox from 'yet-another-react-lightbox';
 import 'yet-another-react-lightbox/styles.css';
@@ -8,9 +9,8 @@ import Thumbnails from 'yet-another-react-lightbox/plugins/thumbnails';
 import Zoom from 'yet-another-react-lightbox/plugins/zoom';
 import 'yet-another-react-lightbox/plugins/thumbnails.css';
 import 'yet-another-react-lightbox/plugins/captions.css';
+import { Column, loadImageDimensions, range, Row, sumArray, useResponsiveContext } from 'phantom-library';
 import style from './Gallery.module.scss';
-import type { LoadedImage, ResponsiveType } from 'phantom-library';
-import { Column, Row, loadImageDimensions, range, sumArray, useResponsiveContext } from 'phantom-library';
 
 interface Photo {
     file: string;
@@ -33,12 +33,12 @@ interface ExactRow {
 }
 
 interface ExactLayout extends BaseGalleryLayout {
-    rows: ExactRow[]
+    rows: ExactRow[];
 }
 
 interface GalleryProps {
     photos: Photo[];
-    layout: ResponsiveType<GalleryLayout>
+    layout: ResponsiveType<GalleryLayout>;
     description?: string;
 }
 
@@ -74,7 +74,7 @@ const Gallery: React.FC<GalleryProps> = ({ photos, layout, description = '' }) =
 
     const getGallery = () => {
         if (galleryLayout.exact) {
-            const gallery: ExactLayout = galleryLayout as ExactLayout
+            const gallery: ExactLayout = galleryLayout as ExactLayout;
             return (
                 <Column className={style.gallery} gap={`${space}px`}>
                     {gallery.rows.map((row: ExactRow, index: number) => {
@@ -84,28 +84,31 @@ const Gallery: React.FC<GalleryProps> = ({ photos, layout, description = '' }) =
                             <Row gap={`${space}px`} key={index} cssProperties={{ width: row.width }}>
                                 {range(row.photos).map((column: number) => {
                                     const photoIndex = start + column;
-                                    const photo = loadedPhotos[photoIndex]
-                                    const width = `calc((100% - ${(row.photos - 1) * space}px) / ${(1 / (photo.width / rowWidth))})`;
-                                    return <img
-                                        src={photo.src}
-                                        key={photoIndex}
-                                        style={{ width, aspectRatio: `${photo.width}/${photo.height}` }}
-                                        onClick={() => setIndex(photoIndex)}
-                                    />
+                                    const photo = loadedPhotos[photoIndex];
+                                    const width = `calc((100% - ${(row.photos - 1) * space}px) / ${1 / (photo.width / rowWidth)})`;
+                                    /* eslint-disable jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions */
+                                    return (
+                                        <img
+                                            src={photo.src}
+                                            key={photoIndex}
+                                            style={{ width, aspectRatio: `${photo.width}/${photo.height}` }}
+                                            onClick={() => setIndex(photoIndex)}
+                                            alt={`Gallery #${photoIndex}`}
+                                        />
+                                    );
+                                    /* eslint-enable jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions */
                                 })}
                             </Row>
-                        )
+                        );
                     })}
                 </Column>
-            )
+            );
         } else {
-            const gallery: SimpleLayout = galleryLayout as SimpleLayout
+            const gallery: SimpleLayout = galleryLayout as SimpleLayout;
             const rows = gallery.rows ?? Math.ceil(loadedPhotos.length / gallery.columns!);
             const columns = gallery.columns ?? Math.ceil(loadedPhotos.length / rows!);
 
-            const photoRows = Array.from({ length: rows }, (_, rowIndex) =>
-                loadedPhotos.slice(rowIndex * columns, (rowIndex + 1) * columns)
-            );
+            const photoRows = Array.from({ length: rows }, (_, rowIndex) => loadedPhotos.slice(rowIndex * columns, (rowIndex + 1) * columns));
 
             return (
                 <Column className={style.gallery} gap={`${space}px`}>
@@ -116,37 +119,42 @@ const Gallery: React.FC<GalleryProps> = ({ photos, layout, description = '' }) =
                             <Row gap={`${space}px`} key={rowIndex}>
                                 {photoRow.map((photo, column: number) => {
                                     const photoIndex = start + column;
-                                    const width = `calc((100% - ${(photoRow.length - 1) * space}px) / ${(1 / (photo.width / rowWidth))})`;
+                                    const width = `calc((100% - ${(photoRow.length - 1) * space}px) / ${1 / (photo.width / rowWidth)})`;
+                                    /* eslint-disable jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions */
                                     return (
                                         <img
                                             src={photo.src}
                                             key={photoIndex}
                                             style={{ width, aspectRatio: `${photo.width}/${photo.height}` }}
                                             onClick={() => setIndex(photoIndex)}
+                                            alt={`Gallery #${photoIndex}`}
                                         />
-                                    )
+                                    );
+                                    /* eslint-enable jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions */
                                 })}
                             </Row>
-                        )
+                        );
                     })}
                 </Column>
-            )
+            );
         }
-    }
+    };
 
-    return loadedPhotos.length > 0 && (
-        <div>
-            {getGallery()}
-            <Lightbox
-                slides={loadedPhotos}
-                open={index >= 0}
-                index={index}
-                close={() => setIndex(-1)}
-                plugins={[Fullscreen, Slideshow, Thumbnails, Zoom, Captions]}
-                captions={{ showToggle: false, descriptionTextAlign: 'center', descriptionMaxLines: 2 }}
-            />
-        </div>)
-
+    return (
+        loadedPhotos.length > 0 && (
+            <div>
+                {getGallery()}
+                <Lightbox
+                    slides={loadedPhotos}
+                    open={index >= 0}
+                    index={index}
+                    close={() => setIndex(-1)}
+                    plugins={[Fullscreen, Slideshow, Thumbnails, Zoom, Captions]}
+                    captions={{ showToggle: false, descriptionTextAlign: 'center', descriptionMaxLines: 2 }}
+                />
+            </div>
+        )
+    );
 };
 
 export { Gallery };

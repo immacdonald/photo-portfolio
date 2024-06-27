@@ -1,8 +1,7 @@
 import { Flex, Page, Section, StyledImage } from 'phantom-library';
-//import { Page } from '../components/Page';
-import selfPortrait from '../static/images/kam.jpg';
+import { selfPortrait } from '@assets/images';
 
-function Biography() {
+const Biography: React.FC = () => {
     return (
         <Page>
             <Section transparent>
@@ -26,6 +25,6 @@ function Biography() {
             </Section>
         </Page>
     );
-}
+};
 
 export { Biography };
