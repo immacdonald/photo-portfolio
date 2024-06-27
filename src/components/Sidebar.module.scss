@@ -15,7 +15,7 @@ $background-color: var(--color-surface-foreground);
     z-index: 100;
     display: flex;
     flex-direction: column;
-    transition: transform ease 0.5s;
+    transition: transform var(--transition-mid);
     padding: 0 $sidebar-padding;
 
     &.closed {
@@ -48,7 +48,7 @@ $background-color: var(--color-surface-foreground);
     height: $sidebar-toggle;
     border-radius: calc(#{$sidebar-toggle}/ 2) !important;
     background-color: $background-color !important;
-    transition: background-color ease 0.5s;
+    transition: background-color var(--transition-mid);
 
     &:hover {
         background-color: var(--border-color-light) !important;

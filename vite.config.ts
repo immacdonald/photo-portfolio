@@ -49,6 +49,6 @@ function devConfig() {
 
 function prodConfig() {
     return {
-        ...baseConfig,
+        ...baseConfig
     };
 }

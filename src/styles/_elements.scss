@@ -16,9 +16,9 @@ footer {
     width: 100%;
     margin-left: 0;
     transition:
-        margin-left ease 0.5s,
-        width ease 0.5s,
-        padding ease 0.5s;
+        margin-left var(--transition-mid),
+        width var(--transition-mid),
+        padding var(--transition-mid);
 }
 
 [data-mobile='false'] {

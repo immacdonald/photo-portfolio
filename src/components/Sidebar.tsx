@@ -1,6 +1,6 @@
-import React, { ComponentType } from 'react';
+import React, { ComponentType, useRef } from 'react';
 import clsx from 'clsx';
-import { Accordion, Button, Column, IconProps, MoonFilled, Row, SunFilled, UnstyledButton, useResponsiveContext } from 'phantom-library';
+import { Accordion, Button, Column, IconProps, MoonFilled, Row, SunFilled, UnstyledButton, useOutsideClick, useResponsiveContext } from 'phantom-library';
 import { Instagram, LinkedIn, Mail } from '@assets/icons';
 import { logo, signature } from '@assets/images';
 import { useWebsiteContext } from '@contexts/useWebsiteContext';
@@ -50,10 +50,6 @@ const Sidebar: React.FC = () => {
 
     const toggleTheme = () => (theme === 'light' ? setTheme('dark') : setTheme('light'));
 
-    const sidebarClasses = clsx(style.sidebar, {
-        [style.closed]: !sidebar
-    });
-
     const sidebarContent = (
         <Column>
             <div className={style.signature}>
@@ -80,9 +76,22 @@ const Sidebar: React.FC = () => {
         </Column>
     );
 
+    const ref = useRef<HTMLElement>(null);
+
+    useOutsideClick(ref, () => {
+        if (sidebar && isMobile) {
+            setSidebar(false);
+        }
+    });
+
+    const sidebarClasses = clsx(style.sidebar, {
+        [style.closed]: !sidebar
+    });
+
     return (
         <aside
             className={sidebarClasses}
+            ref={ref}
             role="presentation"
             onMouseEnter={() => {
                 hoverSidebar(true);
