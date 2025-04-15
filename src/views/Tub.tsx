@@ -1,10 +1,11 @@
+import type { FC } from 'react';
 import { Heading, Page, Section, tokens, Typography } from 'phantom-library';
 import { tubSeries } from '@assets/images';
 import { Gallery } from '@components/Gallery';
 
-const Tub: React.FC = () => {
+const Tub: FC = () => {
     return (
-        <Page>
+        <Page title="Kam Lin | Tub">
             <Section>
                 <Heading size="hero">Tub, 2022</Heading>
                 <Gallery

@@ -1,11 +1,12 @@
+import type { FC } from 'react';
 import { Heading, Section, tokens, Typography } from 'phantom-library';
 import { orionSeries } from '@assets/images';
 import { Gallery } from '@components/Gallery';
 import { PageLayout } from '@components/PageLayout';
 
-const Orion: React.FC = () => {
+const Orion: FC = () => {
     return (
-        <PageLayout>
+        <PageLayout title="Kam Lin | Orion">
             <Section>
                 <Heading size="hero">Orion, 2023</Heading>
                 <Gallery

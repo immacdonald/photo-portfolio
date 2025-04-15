@@ -1,9 +1,10 @@
+import type { FC } from 'react';
 import { Heading, Section, tokens, Typography } from 'phantom-library';
 import { PageLayout } from '@components/PageLayout';
 
-export const CV: React.FC = () => {
+export const CV: FC = () => {
     return (
-        <PageLayout>
+        <PageLayout title="Kam Lin | CV">
             <Section>
                 <Heading size="hero">Curriculum Vitae</Heading>
                 <Heading size="minor">Education</Heading>

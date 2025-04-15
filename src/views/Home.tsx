@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { useState, type FC } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { Column, Section, Typography, useInterval } from 'phantom-library';
 import { backgroundImages, glowingSignature } from '@assets/images';
 import { Footer } from '@components/Footer';
 import style from './Home.module.scss';
 
-const Home: React.FC = () => {
+const Home: FC = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
 
     useInterval(() => {
@@ -13,6 +14,9 @@ const Home: React.FC = () => {
 
     return (
         <main className={style.background} style={{ backgroundImage: `url(${backgroundImages[currentIndex]})` }}>
+            <Helmet>
+                <title>Kam Lin</title>
+            </Helmet>
             <Section data-theme="dark">
                 <Column stretch>
                     <Column className={style.signature} block verticalAlign="center">

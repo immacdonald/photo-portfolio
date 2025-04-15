@@ -8,7 +8,7 @@ $background-color: var(--background-container);
 
     position: fixed;
     height: 100%;
-    left: 0;
+    inset: 0;
     width: $sidebar-width;
     background-color: $background-color;
     border-right: var(--border-soft);

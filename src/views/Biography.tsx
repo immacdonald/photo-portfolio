@@ -1,10 +1,11 @@
+import type { FC } from 'react';
 import { Box, Flex, Heading, Section, StyledImage, tokens, Typography } from 'phantom-library';
 import { selfPortrait } from '@assets/images';
 import { PageLayout } from '@components/PageLayout';
 
-const Biography: React.FC = () => {
+const Biography: FC = () => {
     return (
-        <PageLayout>
+        <PageLayout title="Kam Lin | Biography">
             <Section>
                 <Heading size="hero">Biography</Heading>
                 <Flex flex={{ base: 'row', md: 'column' }} verticalAlign="start" gap={tokens.space.xl}>
