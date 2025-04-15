@@ -1,15 +1,15 @@
 import type { LoadedImage, ResponsiveType } from 'phantom-library';
-import React, { useEffect, useState } from 'react';
-import Lightbox from 'yet-another-react-lightbox';
+import { useEffect, useState, type FC, type ReactNode } from 'react';
+import { Column, loadImageDimensions, range, Row, sumArray, useResponsiveContext } from 'phantom-library';
 import 'yet-another-react-lightbox/styles.css';
+import Lightbox from 'yet-another-react-lightbox';
 import Captions from 'yet-another-react-lightbox/plugins/captions';
 import Fullscreen from 'yet-another-react-lightbox/plugins/fullscreen';
 import Slideshow from 'yet-another-react-lightbox/plugins/slideshow';
 import Thumbnails from 'yet-another-react-lightbox/plugins/thumbnails';
-import Zoom from 'yet-another-react-lightbox/plugins/zoom';
 import 'yet-another-react-lightbox/plugins/thumbnails.css';
 import 'yet-another-react-lightbox/plugins/captions.css';
-import { Column, loadImageDimensions, range, Row, sumArray, useResponsiveContext } from 'phantom-library';
+import Zoom from 'yet-another-react-lightbox/plugins/zoom';
 import style from './Gallery.module.scss';
 
 interface Photo {
@@ -44,11 +44,11 @@ interface GalleryProps {
 
 type GalleryLayout = SimpleLayout | ExactLayout;
 
-const Gallery: React.FC<GalleryProps> = ({ photos, layout, description = '' }) => {
+const Gallery: FC<GalleryProps> = ({ photos, layout, description = '' }) => {
     const [index, setIndex] = useState<number>(-1);
     const [loadedPhotos, setPhotos] = useState<LoadedImage[]>([]);
 
-    const loadImages = async () => {
+    const loadImages = async (): Promise<void> => {
         const imagePromises = photos.map(async (photo) => {
             const { src, width, height } = await loadImageDimensions(photo.file);
             const photoDescription = description ? `${photo.title}\n ${description}` : photo.title;
@@ -72,7 +72,7 @@ const Gallery: React.FC<GalleryProps> = ({ photos, layout, description = '' }) =
     const galleryLayout = parse<GalleryLayout>(layout)!;
     const space = 8;
 
-    const getGallery = () => {
+    const getGallery = (): ReactNode => {
         if (galleryLayout.exact) {
             const gallery: ExactLayout = galleryLayout as ExactLayout;
             return (
@@ -81,7 +81,7 @@ const Gallery: React.FC<GalleryProps> = ({ photos, layout, description = '' }) =
                         const start = index > 0 ? sumArray(gallery.rows, 'photos', 0, index) : 0;
                         const rowWidth = sumArray(loadedPhotos, 'width', start, start + row.photos);
                         return (
-                            <Row gap={`${space}px`} key={index} cssProperties={{ width: row.width }}>
+                            <Row gap={`${space}px`} key={index} style={{ width: row.width }}>
                                 {range(row.photos).map((column: number) => {
                                     const photoIndex = start + column;
                                     const photo = loadedPhotos[photoIndex];

@@ -2,28 +2,12 @@
 
 :root,
 ::selection {
-    --color-selection: var(--alpha-2);
+    --selection-color: var(--alpha-contrast);
 }
 
 :root {
-    --font-body: 'Times New Roman', serif;
-    --font-header: 'Bebas Neue', cursive;
-}
-
-:root[data-theme='light'] {
-    --color-surface-page: var(--grey-1);
-    --v-invert: 0;
-}
-
-:root[data-theme='dark'] {
-    --color-text: var(--color-text-on-dark);
-    --color-text-soft: var(--grey-4);
-    --color-surface-page: var(--grey-7);
-    --color-surface-foreground: var(--black);
-    --color-surface-background: var(--grey-7);
-    --border-color-light: var(--grey-5);
-    --border-color-dark: var(--grey-3);
-    --scrollbar-color: var(--grey-4);
-    --scrollbar-background: var(--grey-5);
-    --v-invert: 1;
+    --font-seriff: 'Times New Roman', serif;
+    --font-sans-seriff: 'Bebas Neue', cursive;
+    --font-body: var(--font-seriff);
+    --font-heading: var(--font-sans-seriff);
 }

@@ -3,9 +3,21 @@
     "version": "1.2.1",
     "private": true,
     "homepage": "http://www.kam-lin.com",
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "tsc && vite build",
+        "preview": "vite preview",
+        "predeploy": "npm run build",
+        "deploy": "gh-pages -d dist",
+        "lint": "npx eslint . --report-unused-disable-directives --fix && tsc --noEmit --emitDeclarationOnly false",
+        "prettier": "prettier ./ --write --ignore-path ./node_modules/phantom-config/.prettierignore",
+        "stylelint": "npx stylelint 'src/**/*.{css,scss}' --fix",
+        "format": "npm run lint && npm run stylelint && npm run prettier"
+    },
     "dependencies": {
         "clsx": "^2.1.1",
-        "phantom-library": "^0.9.0",
+        "phantom-library": "^1.2.3",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "react-photo-album": "^2.2.2",
@@ -14,26 +26,14 @@
         "vite-plugin-svgr": "^4.1.0",
         "yet-another-react-lightbox": "^3.11.3"
     },
-    "scripts": {
-        "dev": "vite",
-        "build": "tsc && vite build",
-        "preview": "vite preview",
-        "predeploy": "npm run build",
-        "deploy": "gh-pages -d dist",
-        "lint": "eslint . --ext ts,tsx --report-unused-disable-directives && tsc --noEmit --emitDeclarationOnly false",
-        "prettier": "prettier ./ --check --ignore-path ./node_modules/@imacdonald/phantom-config/.prettierignore",
-        "prettier:fix": "prettier ./ --write --ignore-path ./node_modules/@imacdonald/phantom-config/.prettierignore",
-        "stylelint": "npx stylelint '**/*.{css,scss}'",
-        "stylelint:fix": "npx stylelint '**/*.{css,scss}' --fix",
-        "format": "npm run lint && npm run stylelint:fix && npm run prettier:fix"
-    },
     "devDependencies": {
-        "@imacdonald/phantom-config": "^0.4.2",
         "@types/node": "^20.11.7",
         "@types/react": "^18.2.15",
         "@types/react-dom": "^18.2.7",
         "@vitejs/plugin-react": "^4.0.3",
+        "eslint": "^9.24.0",
         "gh-pages": "^5.0.0",
+        "phantom-config": "^1.1.0",
         "typescript": "^5.0.2",
         "vite": "^4.4.12",
         "vite-tsconfig-paths": "^4.3.2"

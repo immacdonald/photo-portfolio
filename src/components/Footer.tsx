@@ -1,13 +1,20 @@
-import React from 'react';
-import style from './Footer.module.scss';
+import { useMemo, type CSSProperties, type FC } from 'react';
+import { StyledFooter, Typography } from 'phantom-library';
+import styles from './Footer.module.scss';
 
-const Footer: React.FC = () => {
+interface FooterProps {
+    transparent?: boolean;
+}
+
+const Footer: FC<FooterProps> = ({ transparent }) => {
+    const year = useMemo(() => new Date().getFullYear(), []);
+
+    const properties: CSSProperties = transparent ? { backgroundColor: 'transparent' } : {};
+
     return (
-        <footer className={style.footer}>
-            <div className={style.content}>
-                <span>&copy; Kam Lin 2024 </span>
-            </div>
-        </footer>
+        <StyledFooter height="36px" className={styles.footer} style={properties}>
+            <Typography.Text>&copy; Kam Lin 2022-{year} </Typography.Text>
+        </StyledFooter>
     );
 };
 

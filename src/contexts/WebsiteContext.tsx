@@ -1,5 +1,6 @@
 import type { SetState } from 'phantom-library';
-import { createContext, ReactNode, useMemo } from 'react';
+import type { ReactNode } from 'react';
+import { createContext, useMemo } from 'react';
 import { useSidebar } from '@hooks/useSidebar';
 
 interface WebsiteContextProps {

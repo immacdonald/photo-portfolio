@@ -1,0 +1,9 @@
+.page {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+
+    > section:first-of-type {
+        padding-top: var(--layout-space-md);
+    }
+}

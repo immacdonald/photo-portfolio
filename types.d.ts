@@ -1,8 +1,8 @@
 declare module '*.svg' {
-    import * as React from 'react';
+    import type * as React from 'react';
 
     export const ReactComponent: React.FunctionComponent<React.ComponentProps<'svg'> & { title?: string }>;
-    export default ReactComponent; // eslint-disable-line import-x/no-default-export
+    export default ReactComponent;
 }
 
 export {};

@@ -1,5 +1,5 @@
 {
-    "extends": "@imacdonald/phantom-config/tsconfig",
+    "extends": "phantom-config/tsconfig",
     "compilerOptions": {
         "outDir": "dist",
         "baseUrl": ".",
@@ -13,7 +13,8 @@
             "@types": ["./src/types"],
             "@views": ["./src/views"]
         },
-        "types": ["node", "vite-plugin-svgr/client"]
+        "types": ["node", "vite-plugin-svgr/client"],
+        "verbatimModuleSyntax": true
     },
     "include": ["src", "types.d.ts"],
     "references": [

@@ -1,11 +1,11 @@
-import { useEffect } from 'react';
-import { PhantomApp, useResponsiveContext } from 'phantom-library';
+import { useEffect, type FC } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { Footer } from '@components/Footer';
+import { StyledApp, useResponsiveContext } from 'phantom-library';
 import { Sidebar } from '@components/Sidebar';
+import { ToggleThemeButton } from '@components/ToggleThemeButton';
 import { Biography, CV, Home, Orion, Tub } from '@views';
 
-const App = () => {
+const RoutedApp: FC = () => {
     const { isMobile } = useResponsiveContext();
 
     useEffect(() => {
@@ -13,8 +13,9 @@ const App = () => {
     }, [isMobile]);
 
     return (
-        <PhantomApp anchors={false}>
+        <>
             <Sidebar />
+            <ToggleThemeButton />
             <Routes>
                 <Route index element={<Home />} />
                 <Route path="biography" element={<Biography />} />
@@ -24,8 +25,15 @@ const App = () => {
                 </Route>
                 <Route path="cv" element={<CV />} />
             </Routes>
-            <Footer />
-        </PhantomApp>
+        </>
+    );
+};
+
+const App: FC = () => {
+    return (
+        <StyledApp rootId="root" theme="dark">
+            <RoutedApp />
+        </StyledApp>
     );
 };
 

@@ -1,5 +1,3 @@
-@use '../styles' as s;
-
 .background {
     position: fixed;
     top: 0;
@@ -10,13 +8,22 @@
     transition: background-image 1s ease-in-out;
     background-size: cover;
     background-position: center;
+    display: flex;
+    flex-direction: column;
 }
 
 .signature {
-    margin-top: $xxl;
+    margin-top: 25vh;
 
     > img {
-        width: 100%;
+        width: 60vw;
+        margin-top: -6vw;
         filter: invert(1);
+        user-select: none;
+    }
+
+    > span {
+        font-size: var(--text-header-xxl);
+        font-family: var(--font-sans-seriff);
     }
 }

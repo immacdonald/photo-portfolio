@@ -1,14 +1,6 @@
-@use '../styles' as *;
-
 .footer {
-    justify-content: center;
-    display: flex;
-    width: 100%;
-    height: 36px;
-    font-family: var(--font-header);
-
-    .content {
-        margin-top: $xs;
-        font-size: $font-sm;
-    }
+    background-color: var(--background-page);
+    font-family: var(--font-sans-seriff);
+    margin-top: var(--space-xs);
+    font-size: var(--font-size-sm);
 }
