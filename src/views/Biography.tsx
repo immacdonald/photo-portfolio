@@ -21,7 +21,7 @@ const Biography: React.FC = () => {
                             aims to convey something of power, but hopes that the power is found within her audience rather than from her own statements about the work.
                         </Typography.Paragraph>
                     </Box>
-                    <StyledImage image={selfPortrait} alt="Kam with a flower" maxWidth="sm" />
+                    <StyledImage image={selfPortrait} alt="Kam with a flower" maxWidth="sm" border />
                 </Flex>
             </Section>
         </PageLayout>

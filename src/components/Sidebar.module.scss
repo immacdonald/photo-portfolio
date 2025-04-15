@@ -11,7 +11,7 @@ $background-color: var(--background-container);
     left: 0;
     width: $sidebar-width;
     background-color: $background-color;
-    border-right: var(--border-light);
+    border-right: var(--border-soft);
     z-index: 100;
     display: flex;
     flex-direction: column;
@@ -48,10 +48,10 @@ $background-color: var(--background-container);
     height: $sidebar-toggle;
     border-radius: calc(#{$sidebar-toggle}/ 2) !important;
     background-color: $background-color !important;
-    transition: background-color var(--transition-medium);
+    transition: background-color var(--transition-fast);
 
     &:hover {
-        background-color: var(--border-color-light) !important;
+        background-color: var(--border-color-soft) !important;
     }
 
     img {
@@ -71,7 +71,7 @@ $background-color: var(--background-container);
         height: 100%;
         border-top-right-radius: calc(#{$sidebar-toggle} + #{$border-width});
         border-bottom-right-radius: calc(#{$sidebar-toggle} + #{$border-width});
-        border: var(--border-light);
+        border: var(--border-soft);
         border-left: 0;
     }
 }
