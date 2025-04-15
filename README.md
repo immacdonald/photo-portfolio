@@ -1,4 +1,4 @@
-# A Minimalist Photography Portfolio Site - [See It Here!](kam-lin.com)
+# A Minimalist Photography Portfolio Site - [See It Here!](https://kam-lin.com)
 
 Made for the photographer Kam Lin, this is a portfolio website showcasing a variety of her works. It includes interactive photo galleries, light and dark modes, and is fully responsive on mobile devices.
 
@@ -18,4 +18,4 @@ Linting is done with [ESLint](https://eslint.org/) while code formatting is done
 
 ## Deployment
 
-GitHub Pages is used for deploying the React app onto [kam-lin.com](kam-lin.com) through the use of the custom domain DNS feature.
+GitHub Pages is used for deploying the React app onto [kam-lin.com](https://kam-lin.com) through the use of the custom domain DNS feature.
