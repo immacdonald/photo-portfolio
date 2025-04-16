@@ -1,6 +1,5 @@
 @use '../styles' as *;
 
-$border-width: 1px;
 $background-color: var(--background-container);
 
 .sidebar {
@@ -11,7 +10,6 @@ $background-color: var(--background-container);
     inset: 0;
     width: $sidebar-width;
     background-color: $background-color;
-    border-right: var(--border-soft);
     z-index: 100;
     display: flex;
     flex-direction: column;
@@ -69,9 +67,8 @@ $background-color: var(--background-container);
         top: 0%;
         width: 50%;
         height: 100%;
-        border-top-right-radius: calc(#{$sidebar-toggle} + #{$border-width});
-        border-bottom-right-radius: calc(#{$sidebar-toggle} + #{$border-width});
-        border: var(--border-soft);
+        border-top-right-radius: $sidebar-toggle;
+        border-bottom-right-radius: $sidebar-toggle;
         border-left: 0;
     }
 }

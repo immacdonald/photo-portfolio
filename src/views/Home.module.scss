@@ -18,12 +18,8 @@
     > img {
         width: 60vw;
         margin-top: -6vw;
+        transform: translateX(10%);
         filter: invert(1);
         user-select: none;
-    }
-
-    > span {
-        font-size: var(--text-header-xxl);
-        font-family: var(--font-sans-seriff);
     }
 }

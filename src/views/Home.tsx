@@ -20,7 +20,6 @@ const Home: FC = () => {
             <Section data-theme="dark">
                 <Column stretch>
                     <Column className={style.signature} block verticalAlign="center">
-                        <Typography.Text>Kam Lin</Typography.Text>
                         <img src={glowingSignature} draggable="false" alt="Kam's signature" />
                     </Column>
                 </Column>

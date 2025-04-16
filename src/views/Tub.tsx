@@ -10,7 +10,7 @@ const Tub: FC = () => {
                 <Heading size="hero">Tub, 2022</Heading>
                 <Gallery
                     photos={tubSeries.photos}
-                    description="Large Format Film, Silver Gelatin Print"
+                    description="Large Format Film, Paper Print"
                     layout={{
                         base: { exact: true, rows: [{ photos: 4, width: '60%' }, { photos: 5 }, { photos: 5 }, { photos: 5 }, { photos: 5 }] },
                         md: { exact: false, columns: 3 },
