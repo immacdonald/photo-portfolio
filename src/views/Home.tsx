@@ -1,6 +1,6 @@
 import { useState, type FC } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Column, Section, Typography, useInterval } from 'phantom-library';
+import { Column, Section, useInterval } from 'phantom-library';
 import { backgroundImages, glowingSignature } from '@assets/images';
 import { Footer } from '@components/Footer';
 import style from './Home.module.scss';
